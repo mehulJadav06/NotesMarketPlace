@@ -1,0 +1,115 @@
+@media (min-width:992px) and (max-width:1199px) {
+    .navbar-nav {
+        padding-left: 15px;
+    }
+
+    .navbar-brand {
+        width: fit-content;
+    }
+    .navbar-brand img {
+        width: 80%;
+    }
+    .seller {
+        margin-left: 10px;
+    }
+
+    .btn-navbar {
+        margin-left: 15px;
+    }
+    
+}
+
+@media (min-width:768px) and (max-width:991px) {
+    .nav-item{
+        margin-top: 0px;
+    }
+
+    .nav-item img{
+        margin-bottom: 10px;
+    }
+    .navbar-nav {
+        padding-left: 0;
+    }
+
+    .btn-navbar {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    .seller {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    .form-inline {
+        float: left;
+    }
+}
+
+@media (max-width:767px){
+    .navbar-nav {
+        padding-left: 0;
+    }
+    .nav-item{
+        margin-top: 0px;
+    }
+
+    .nav-item img{
+        margin-bottom: 10px;
+    }
+    .btn-navbar {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    .seller {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    .form-inline {
+        float: left;
+    }
+
+    footer .row > div {
+        text-align: center !important;
+    }
+
+
+    input[type="text"],input[type='email']
+{
+    width: 100%;
+}
+        #phone-no{
+    width:96%;
+}
+    #exampleFormControlTextarea1{
+        width:100%;
+    }
+    
+}
+
+@media(max-width:575px) {
+    .navbar-brand {
+        width: 75%;
+    }
+
+    .navbar-brand img {
+        width: 100%;
+    }
+
+    .navbar-toggler {
+        position: fixed;
+        right: 0px;
+        top: 0px;
+    }
+}
+@media (max-width:480px){
+        input[type="text"],input[type='email']
+    {
+        width: 100%;
+    }
+        #phone-no{
+    width:95%;
+}
+}

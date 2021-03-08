@@ -1,0 +1,98 @@
+@media (min-width:992px) and (max-width:1199px) {
+    nav .container{
+        margin-left: 0px;
+    }
+    .navbar-nav {
+        padding-left: 0px;
+    }
+
+    .seller {
+        margin-left: 2px;
+    }
+
+    .btn-navbar {
+        margin-left: 8px;
+    }
+    .nav-item img{
+        margin-left:5px;
+    }
+    ul.navbar-nav > li.active > a {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .navbar-brand {
+        width: fit-content;
+    }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+    .navbar-nav {
+        padding-left: 0px;
+    }
+
+    .btn-navbar {
+
+        margin-top: 10px;
+        margin-left: 5px;
+    }
+
+    .navbar {
+        display: block;
+    }
+    
+    .navbar-nav li {
+        margin: 5px 0px;
+    }
+
+    .seller {
+        margin-left: 0px;
+    }
+
+    .nav-item img{
+        margin-left:0px;
+    }
+    .form-inline {
+        float: left;
+    }
+}
+
+@media (max-width:767px) {
+    .form-inline {
+        float: left;
+    }
+
+    .navbar-nav {
+        padding-left: 0px;
+    }
+
+    .btn-navbar {
+
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+
+    footer p {
+        text-align: center;
+    }
+
+    footer .social-list {
+        text-align: center;
+    }
+}
+
+@media(max-width:575px) {
+    .navbar-brand {
+        width: 75%;
+    }
+
+    .navbar-brand img {
+        width: 100%;
+    }
+
+    .navbar-toggler {
+        position: fixed;
+        right: 0px;
+        top: 0px;
+    }
+}

@@ -1,0 +1,370 @@
+﻿@model Notes_MarketPlace.Models.AddNotes
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Notes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../Content/Front/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../Content/Front/css/add-notes/add-notes.css">
+    <link rel="stylesheet" href="../../Content/Front/css/add-notes/responsive.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="../../Content/Front/images/user-profile/navbarbanner.png" alt="logo" class="img-responsive">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">&#9776;</span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="Search-Notes.html">Search<span class="spacing">Notes</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="My-Soldnotes.html">Sell<span class="spacing">Your</span><span class="spacing">Notes</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Buyer-Requests.html">Buyer<span class="spacing">Requests</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="FAQ.html">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Contact-us.html">Contact<span class="spacing">Us</span></a>
+
+                        </li>
+                        <li class="nav-item">
+                            <img src="../../Content/Front/images/Dashboard/user-img.png" alt="client" class="rounded-circle seller">
+                        </li>
+
+                        <li class="nav-item">
+                            <form class="form-inline">
+
+                                <button class="btn btn-outline-success btn-navbar" type="submit">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section id="title">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 id="titleAddNote">Add Notes</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <section id="add-notes">
+            @using (Html.BeginForm("AddNotes", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="basic-notes-form">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12">
+                            <div class="header">
+                                <h2>Basic Notes Details</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Title, "Title*")
+                                @Html.ValidationMessageFor(m => m.Title)
+                                @Html.TextBoxFor(m => m.Title, new { @class = "form-control", @placeholder = "Enter your notes title" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+
+                                @Html.LabelFor(m => m.CategoryID, "Category*")
+                                @Html.ValidationMessageFor(m => m.categories)
+                                @Html.DropDownListFor(m => m.CategoryID, new SelectList(Model.categories, "ID", "Name"), "Select your Category", new { @class = "form-control custom-select" })
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-12">
+
+                                    @Html.LabelFor(m => m.DisplayPicture, "Display Picture")
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-12 text-center">
+                                    <div class="add-border">
+                                        <label for="DisplayPicture" class="upload-profile">
+                                            <img src="../../Content/Front/images/images/upload-file.png">
+                                            <p id="DisplayPictureFilename" style="color: lightgray;">Upload a Picture</p>
+                                            @Html.TextBoxFor(m => m.DisplayPicture, new { type = "file", style = "display: none;" })
+                                            @Html.ValidationMessageFor(m => m.DisplayPicture)
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-12">
+
+                                    @Html.LabelFor(m => m.UploadNotes, "Upload Notes")
+                                    @Html.ValidationMessageFor(m => m.UploadNotes)
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-12 text-center">
+                                    <div class="add-border">
+                                        <label for="UploadNotes" class="upload-profile">
+                                            <img src="../../Content/Front/images/images/upload-note.png">
+                                            <p id="UploadNotesFilename" style="color: lightgray;">Upload your Notes</p>
+                                            @Html.TextBoxFor(m => m.UploadNotes, new { type = "file", style = "display: none;" })
+
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+
+                                @Html.LabelFor(m => m.NoteTypeID, "Type")
+                                @Html.DropDownListFor(m => m.NoteTypeID, new SelectList(Model.types, "ID", "Name"), "Select your notes type", new { @class = "form-control custom-select" })
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+
+                                @Html.LabelFor(m => m.NumberOfPages, "Number of Pages")
+
+                                @Html.TextBoxFor(m => m.NumberOfPages, new { @class = "form-control", @placeholder = "Enter number of note pages" })
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-12">
+                            <div class="form-group">
+
+
+                                @Html.LabelFor(m => m.Description, "Description*")
+                                @Html.ValidationMessageFor(m => m.Description)
+                                @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @placeholder = "Enter your Description" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="institute-information-form">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12">
+                            <div class="header">
+                                <h2>Institute Details</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+
+                                @Html.LabelFor(m => m.CountryID, "Country")
+                                @Html.DropDownListFor(m => m.CountryID, new SelectList(Model.countries, "ID", "Name"), "Select your Category", new { @class = "form-control custom-select" })
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+
+                                @Html.LabelFor(m => m.UniversityName, "Institution name")
+                                @Html.TextBoxFor(m => m.UniversityName, new { @class = "form-control", @placeholder = "Enter your institute name" })
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Course-Detail">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12">
+                            <div class="header">
+                                <h2>Course Detail</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Course, "Course name")
+                                @Html.TextBoxFor(m => m.Course, new { @class = "form-control", @placeholder = "Enter your course name" })
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.CourseCode, "Course Code")
+                                @Html.TextBoxFor(m => m.CourseCode, new { @class = "form-control", @placeholder = "Enter your course code" })
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+
+                                @Html.LabelFor(m => m.Professor, "Professor/lecturer")
+                                @Html.TextBoxFor(m => m.Professor, new { @class = "form-control", @placeholder = "Enter your professor name" })
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="selling-information">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12">
+                            <div class="header">
+                                <h2>Selling Information</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-12">
+                                    @Html.LabelFor(m => m.IsPaid, "Sell For*")
+                                    @Html.ValidationMessageFor(m => m.IsPaid)
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-12 sell-info" id="radio-btn-line">
+
+                                    <div id="radio-button">
+
+                                        @Html.RadioButtonFor(m => m.IsPaid, false, new { @id = "free" })
+                                        @Html.Label("free", "Free", new { @id = "free-lbl" })
+                                        @Html.RadioButtonFor(m => m.IsPaid, true, new { @id = "paid" })
+                                        @Html.Label("paid", "Paid", new { @id = "paid-lbl" })
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-12 sell-info">
+
+                                    @Html.LabelFor(m => m.SellingPrice, "Sell Price*")
+                                    @Html.ValidationMessageFor(m => m.SellingPrice)
+                                    @Html.TextBoxFor(m => m.SellingPrice, new { @class = "form-control", @id = "sell-price", @placeholder = "Enter your price" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12 sell-info">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-12">
+
+                                    @Html.LabelFor(m => m.NotesPreview)
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-12 text-center">
+                                    <div class="add-border">
+                                        <label for="NotesPreview" class="upload-profile">
+
+                                            <img src="../../Content/Front/images/images/upload-file.png">
+                                            <p id="NotesPreviewFilename" style="color: lightgray;">Upload a Picture</p>
+
+                                            @Html.TextBoxFor(m => m.NotesPreview, new { type = "file", style = "display: none;" })
+                                            @Html.ValidationMessageFor(m => m.NotesPreview)
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button">
+                    <button type="submit" class="btn btn-save">SAVE</button>
+                    <button type="submit" class="btn btn-publish">PUBLISH</button>
+                </div>
+            }
+
+
+        </section>
+    </div>
+
+    <hr>
+    <footer>
+        <div class="content-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <p>
+                            Copyright &copy; Tatvasoft All rights Reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-12 social-list-div">
+                        <ul class="social-list">
+                            <li><a href="#"><img src="../../Content/Front/images/images/facebook.png"></a></li>
+                            <li><a href="#"><img src="../../Content/Front/images/images/twitter.png"></a></li>
+                            <li><a href="#"><img src="../../Content/Front/images/images/linkedin.png"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        //For Profile Picture
+        var input_img = document.getElementById('DisplayPicture');
+        var infoAreaimg = document.getElementById('DisplayPictureFilename');
+
+
+        //For Upload Notes
+        var input_var = document.getElementById('UploadNotes');
+        var infoArea = document.getElementById('UploadNotesFilename');
+
+        //For Preview Notes
+        var input_img1 = document.getElementById('NotesPreview');
+        var infoAreaimg1 = document.getElementById('NotesPreviewFilename');
+
+        if (input_var) {
+            input_var.addEventListener('change', showFileName);
+        }
+
+        if (input_img) {
+            input_img.addEventListener('change', showImgName);
+        }
+
+        if (input_img1) {
+            input_img1.addEventListener('change', showImgName1);
+        }
+
+        function showFileName(event) {
+
+            // the change event gives us the input it occurred in
+            var input_var = event.srcElement;
+
+            // the input has an array of files in the `files` property, each one has a name that you can use. We're just using the name here.
+            var fileName = input_var.files[0].name;
+
+            // use fileName however fits your app best, i.e. add it into a div
+            infoArea.textContent = 'Notes name: ' + fileName;
+        }
+        function showImgName(event) {
+
+            var input_img = event.srcElement;
+
+            var fileName = input_img.files[0].name;
+
+            infoAreaimg.textContent = 'Picture name: ' + fileName;
+        }
+        function showImgName1(event) {
+
+            var input_img1 = event.srcElement;
+
+            var fileName = input_img1.files[0].name;
+
+            infoAreaimg1.textContent = 'Picture name: ' + fileName;
+        }
+    </script>
+    <script src="../../Content/Front/js/jquery.min.js"></script>
+    <script src="../../Content/Front/js/bootstrap.min.js"></script>
+    <script src="../../Content/Front/js/script.js"></script>
+</body>
+
+</html>

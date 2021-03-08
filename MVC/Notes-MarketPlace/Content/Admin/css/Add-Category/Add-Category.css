@@ -1,0 +1,131 @@
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+nav{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.navbar-nav{
+    padding-left: 200px;
+}
+
+ul.navbar-nav > li > a ,
+ul.navbar > li > button{
+    font-family: "Open Sans",sans-serif;
+    color: #333333;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 1px;
+
+}
+.navbar-toggler-icon{
+    background: none;
+    color: #6255a5;
+    font-size:35px;
+    margin-right:5px;
+}
+.btn-navbar{
+    color: #6255a5;
+    background-color: #6255a5;
+    width:89px;
+    height: 40px;
+    border-radius: 3px;
+    color:#fff;
+    font-family: "open Sans", sans-serif;
+    font-size: 13px;
+    margin-left: 30px;   
+}
+.nav-item{
+    margin-top:10px;
+}
+.nav-item-img{
+    margin-top: 0px;
+}
+.spacing{
+    margin-left: 2px;
+}
+
+.seller {
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+}
+
+#padding-navbar{
+  padding-top: 60px;
+}
+
+nav button:focus {
+    outline: none;
+}
+/*** header ****/
+
+
+hr{
+    margin-top:60px
+}
+
+#Add-Category{
+    margin-top: 110px;
+    margin-bottom: 30px;
+
+}
+
+#header h2{
+    font-family: "open sans",sans-serif;
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin-bottom: 20px;
+}
+
+
+/*** Form ***/
+
+#Form{
+    margin-top: 30px;
+}
+
+label{
+    font-family: 'open sans',sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+input[type="text"]
+{
+    height: 50px;
+    width: 50%;
+    border: 1px solid #d1d1d1;
+}
+
+.padding-right{
+    padding:0px;
+}
+
+.btn-submit{
+    background-color: #6255a5;
+    width:120px;
+    height: 50px;
+    border-radius: 3px;
+    color:#fff;
+    font-family: "open Sans", sans-serif;
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 30px;
+}
+label img,label p{
+    cursor: pointer;
+}
+
+
+#exampleFormControlTextarea1 {
+    width: 50%;
+}

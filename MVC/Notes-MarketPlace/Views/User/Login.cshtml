@@ -1,0 +1,105 @@
+﻿@model Notes_MarketPlace.Models.UserLogin
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes-MarketPlace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../Content/Front/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../Content/Front/css/login/login.css">
+    <link rel="stylesheet" href="../../Content/Front/css/login/responsive.css">
+</head>
+<body>
+    <section id="login">
+        <div class="content-box-lg">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-12 col-sm-12 col-12 text-center">
+                        <div id="top-logo">
+                            <img src="../../Content/Front/images/top-logo.png" alt="logo" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-sm-12 col-12">
+                    <div id="login-form">
+                        <div id="heading" class="text-center">
+                            <h2>Login</h2>
+                            <p>Enter Your Email Address and Password to login</p>
+                        </div>
+                        @using (Html.BeginForm("Login", "User", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="col-md-12 col-sm-12 col-12">
+                                <div class="form-group">
+
+                                    @Html.LabelFor(m => m.EmailID, "Email", new { @id = "email" })
+                                    @Html.ValidationMessageFor(m => m.EmailID)
+                                    @Html.TextBoxFor(m => m.EmailID, new { @class = "form-control", @placeholder = "notesmarketplace@gmail.com", type = "email" })
+                                    <p class="incorrect-pwd">
+                                        @Html.ValidationMessage("EmailExist")
+                                    </p>
+
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12" id="password">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class=" col-md-6 col-sm-6 col-6">
+                                            @Html.LabelFor(m => m.Password, "Password", new { @class = "password" })
+                                            @Html.ValidationMessageFor(m => m.Password)
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-6 text-right">
+                                            @Html.ActionLink("Forget Password?", "ForgetPassword", "User",new { @id= "forget-password" })
+                                        </div>
+                                    </div>
+                                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @placeholder = "Enter your password", type = "password" })
+
+                                    <span toggle="#Password" class="eye field-icon toggle-password">
+                                        <img src="../../Content/Front/images/eye.png" alt="eye">
+                                    </span>
+
+                                    
+                                    <p class = "incorrect-pwd">@Html.ValidationMessage("PasswordIncorrect")</p>
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group form-check" id="checkbox-margin">
+
+                                    @Html.CheckBoxFor(m => m.RememberMe, new { @class = "form-check-input" })
+                                    @Html.LabelFor(m => m.RememberMe, " Remember Me", new { @class = "form-check-label", @id = "check-label" })
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12">
+                                <button type="submit" class="btn btn-block btn-general">Login</button>
+                            </div>
+
+
+                        }
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div id="signup-link">
+                                    <p class="text-center">Don't Have Account? @Html.ActionLink("SignUp", "SignUp", "User")</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../../Content/Front/js/jquery.min.js"></script>
+    <script src="../../Content/Front/js/bootstrap.min.js"></script>
+    <script src="../../Content/Front/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+html,body{
+    height:100%;
+    width:100%;
+}
+
+body{
+    background-image: url("../../images/banner-with-overlay.jpg" );
+    background-repeat: no-repeat;
+}
+.container{
+    margin-top:125px;
+    width:670px;
+    height:900px;
+}
+/******* logo ******/
+#top-logo{
+    margin-top: 10px;
+}
+/**** login box ****/
+#login{
+    height:100%;
+    width:100%;
+}
+
+#login-form{
+    margin:25px auto;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 5px;
+}
+/************ heading **********/
+
+#heading{
+    margin-bottom:45px;
+    font-family: "open sans",sans-serif;
+}
+
+#heading h2{
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin-bottom: 20px;
+}
+#heading p{
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19px;
+    color: #333333;
+}
+/********* Form inputs *****/
+#email{
+    font-family:"open sans" ,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color:#333;
+    margin-left: 0px;
+}
+
+input[type=email]{
+    font-family: "open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #000;
+    border: 1px solid #6255a5;
+    width: 100%;
+    height: 50px;
+    border-radius: 3px;
+    /*margin-bottom: 30px;*/
+}
+
+#password{
+    font-family: "open Sans" ,sans-serif;
+}
+
+input[type="password"]{
+     
+    font-family: "open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a; 
+    border: 1px solid #6255a5;
+    width: 100%;
+    height: 50px;
+    border-radius: 3px;
+  }
+
+.incorrect-pwd{
+    font-family: "open Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 20px;
+    color: #ff3636;
+    display: block;
+  }
+input[type="text"] {
+    border: 1px solid #6255a5;
+    width: 100%;
+    height: 50px;
+    border-radius: 3px;
+    font-family: "open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+}
+#forget-password{
+    color:#6255a5;
+}
+.field-icon {
+    float: right;
+    margin-left: -20px;
+    margin-top: -38px;
+    margin-right: 10px;
+    position: relative;
+    z-index: 2;
+  }
+.field-icon:hover{
+    cursor: pointer;
+}
+#checkbox-margin{
+    margin-top:20px;
+    margin-bottom:30px;
+}
+.form-check-input:hover,.form-check-label:hover{
+    cursor: pointer;
+}
+#RememberMe{
+    border: 1px solid #d2d2d2;
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+}
+
+#check-label{
+    font-family: "open Sans", sans-serif;
+    font-size: 16px;   
+    font-weight: 400;
+    line-height: 20px;
+    color: #333333;
+    margin-left: 20px;
+    margin-top: 10px;
+
+  }
+
+/*** button ****/
+  .btn-general{
+      color: #6255a5;
+      background-color: #6255a5;
+      width: 100%;
+      height:50px;
+      border-radius: 3px;
+      color:#fff;
+      font-family: "open Sans", sans-serif;
+      font-size: 18px;
+      line-height: 22px;
+      padding-top: 4px;
+      margin-bottom: 20px;
+}
+
+/*** signup ***/
+#signup-link{
+    font-family: "open Sans",sans-serif;
+    font-size: 16px;
+    font-weight:400;
+    line-height: 20px;
+    color: #333333;
+}
+#signup-link a{
+    color:#6255a5;
+}
