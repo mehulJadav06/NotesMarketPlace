@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes-MarketPlace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/user-profile/user-profile.css">
+    <link rel="stylesheet" href="css/user-profile/responsive.css">
+</head>
+<body>
+<header>
+        <nav class="navbar navbar-expand-lg bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="images/user-profile/navbarbanner.png" alt="logo" class="img-responsive">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">&#9776;</span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="Search-Notes.html">Search<span class="spacing">Notes</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="My-Soldnotes.html">Sell<span class="spacing">Your</span><span class="spacing">Notes</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Buyer-Requests.html">Buyer<span class="spacing">Requests</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="FAQ.html">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Contact-us.html">Contact<span class="spacing">Us</span></a>
+
+                        </li>
+                        <li class="nav-item">
+                            <img src="images/Dashboard/user-img.png" alt="client" class="rounded-circle seller">
+                        </li>
+
+                        <li class="nav-item">
+                            <form class="form-inline">
+
+                                <button class="btn btn-outline-success btn-navbar" type="submit">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="Title">
+        <div class="content-box-lg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div id="title" class="text-center">
+                            <h2>User Profile</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="Detail">
+        <div class="content-box-lg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <form>
+                            <div id="Basic-profile">
+                                <div id="Basic" class="header">
+                                    <h2>Basic Profile Detail</h2>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            <label for="First-Name" id="firstname">First Name*</label>
+                                            <input type="text" id="First-Name" class="form-control" placeholder="Enter your First Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            <label for="Last-Name" id="lastname">Last Name*</label>
+                                            <input type="text" id="Last-Name" class="form-control" placeholder="Enter your Last Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            <label for="enter-email" id="email">Email*</label>
+                                            <input type="email" id="enter-email" class="form-control" placeholder="Enter your email address">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            <label for="DOB" id="date-of-birth">Date of Birth</label>
+                                            <input type="text" id="DOB" class="form-control" placeholder="Enter your Date of Birth">
+                                            <span class="shift-calender"><img src="images/calendar.png"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            <label for="Gender" id="Gender-label">Gender</label>
+                                            <select id="Gender" class="form-control custom-select">
+                                                <option selected>Select your Gender</option>
+                                                <option>Male</option>
+                                                <option>Female</option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            <label for="phoneno" id="phoneno">Phone no.</label>
+                                            <div class="row">
+                                                <div class="col-md-3 col-sm-3 col-3">
+                                                    <div id="country-code">
+                                                        <select id="Country-code" class="form-control custom-select">
+                                                            <option selected>+79</option>
+                                                            <option>+91</option>
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-9 col-sm-9 col-9">
+                                                    <div id="phone-no">
+                                                        <input type="text" class="form-control" placeholder="Enter your phone number " id="phoneno">
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-12">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-12">
+                                                <label for="upload">Profile Picture</label>
+                                            </div>
+                                            <div class="col-md-12 col-sm-12 col-12 text-center">
+                                                <div class="file-border">
+                                                    <label for="upload" class="upload-profile">
+                                                    <img src="images/images/upload-file.png">
+                                                    <p style="color: lightgray;">Upload a Picture</p>
+                                                    <input type="file" id="upload" style="display: none;">
+                                                    </label>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div id="Address-Details">
+                                <div id="address-Detail" class="header">
+                                    <h2>Address Details</h2>
+                                </div>
+                                <div id="address-details-form">
+
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label for="add1">Address Line 1*</label>
+                                                <input type="text" class="form-control" id="add1" placeholder="Enter your address">
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label for="add2">Address Line 2*</label>
+                                                <input type="text" class="form-control" id="add2" placeholder="Enter your address">
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label for="City">City*</label>
+                                                <input type="text" class="form-control" id="CIty" placeholder="Enter your city">
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label for="state">State*</label>
+                                                <input type="text" class="form-control" id="state" placeholder="Enter your state">
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label for="zip-code">ZipCode*</label>
+                                                <input type="text" class="form-control" id="zip-code" placeholder="Enter your zipcode">
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label for="Country" id="Country-label">Country*</label>
+                                                <select id="Country" class="form-control custom-select">
+                                                    <option selected>Select your Country</option>
+                                                    <option>India</option>
+                                                    <option>UK</option>
+                                                    <option>USA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div id="University-Details">
+                                <div id="Basic" class="header">
+                                    <h2>University and College Information</h2>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            <label for="university">University</label>
+                                            <input type="text" class="form-control" id="university"
+                                                placeholder="Enter your university">
+
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            <label for="college">College</label>
+                                            <input type="text" class="form-control" id="college"
+                                                placeholder="Enter your college">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <button type="button" class="btn btn-user-profile">SUBMIT</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <footer>
+        <div class="content-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <p>
+                            Copyright &copy; Tatvasoft All rights Reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-12 social-list-div">
+                        <ul class="social-list">
+                            <li><a href="#"><img src="images/images/facebook.png"></a></li>
+                            <li><a href="#"><img src="images/images/twitter.png"></a></li>
+                            <li><a href="#"><img src="images/images/linkedin.png"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+</body></html>

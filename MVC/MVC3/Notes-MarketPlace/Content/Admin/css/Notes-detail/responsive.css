@@ -1,0 +1,100 @@
+@media (min-width:992px) and (max-width:1199px) {
+    .navbar-nav {
+        padding-left: 15px;
+    }
+
+    .navbar-brand {
+        width: fit-content;
+    }
+    .navbar-brand img {
+        width: 80%;
+    }
+    .seller {
+        margin-left: 10px;
+    }
+
+    .btn-navbar {
+        margin-left: 15px;
+    }
+    
+}
+@media (max-width:991px){
+    .navbar-nav {
+        padding-left: 0;
+    }
+
+    .btn-navbar {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    .seller {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    .form-inline {
+        float: left;
+    }
+    #book-name h2{
+        margin-top:25px;
+    }
+    #detail{
+        margin-top:30px;
+    }
+    #Customer-Reviews{
+        margin-top: 30px;
+    }
+    .form-inline {
+        float: left;
+    }
+} 
+@media (max-width:767px) {
+
+        .navbar-nav {
+        padding-left: 0;
+    }
+
+    .btn-navbar {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    .seller {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    .form-inline {
+        float: left;
+    }
+    footer p {
+        text-align: center;
+    }
+
+    footer .social-list {
+        text-align: center;
+    }
+
+}
+
+@media(max-width:575px) {
+    .navbar-brand {
+        width: 75%;
+    }
+
+    .navbar-brand img {
+        width: 100%;
+    }
+
+    .navbar-toggler {
+        position: fixed;
+        right: 0px;
+        top: 0px;
+    }
+}
+@media(max-width:575px) and (min-width:421px){
+    .customers{
+        padding-left: 60px;
+    }
+}

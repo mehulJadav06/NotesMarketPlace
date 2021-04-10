@@ -1,0 +1,119 @@
+﻿@model Notes_MarketPlace.Context.User
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes-MarketPlace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../Content/Front/css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../Content/Front/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../Content/Front/css/signup/signup.css">
+    <link rel="stylesheet" href="../../Content/Front/css/login/responsive.css" /><!-- both pages have same type of reponsive css -->
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</head>
+<body>
+
+    <section id="signup">
+        <div class="content-box-lg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-12 text-center" id="top-logo">
+                        <img src="../../Content/Front/images/top-logo.png" alt="logo" class="img-resposive">
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div id="signup-box">
+                            <div id="heading" class="text-center">
+                                <h2>Create an Account</h2>
+                                <p>Enter your Details to signup</p>
+                            </div>
+                            
+                            <div id="signed-up" class="text-center"><i class="fa fa-check-circle-o" aria-hidden="false"></i>Your account has been succefully created.</div>
+                            
+                            @using (Html.BeginForm("AddUser", "User",FormMethod.Post))
+                            {
+                                <div class="col-md-12 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        
+                                        @Html.LabelFor(m => m.FirstName , "First Name*", new { @id = "firstname"})
+                                        @Html.ValidationMessageFor(m => m.FirstName,"First Name is Required")
+                                        @Html.TextBoxFor(m =>m.FirstName,new { @class = "form-control" , @placeholder = "Enter your First Name" })
+                                        
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.LastName, "Last Name*", new { @id = "lastname" })
+                                        @Html.ValidationMessageFor(m => m.LastName, "Last Name is Required")
+                                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @placeholder = "Enter your Last Name" })
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.EmailID, "Email*", new { @id = "email" })
+                                        @Html.ValidationMessageFor(m => m.EmailID, "EmailID is Required")
+                                        @Html.ValidationMessage("EmailExist")
+                                        @Html.TextBoxFor(m => m.EmailID, new { @class = "form-control", @placeholder = "Enter your email address", type = "email" })
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12 col-sm-12 col-12">
+                                    <div class="form-group ">
+                                        @Html.LabelFor(m => m.Password, "Password", new { @class = "password" })
+                                        @Html.ValidationMessageFor(m => m.Password, "Password is Required")
+                                        @Html.TextBoxFor(m => m.Password, new { @class = "form-control pwd", @placeholder = "Enter your  password", type = "password" })
+
+                                        <span toggle="#Password" class="eye field-icon toggle-password">
+                                            <img src="../../Content/Front/images/eye.png" alt="eye">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-12" id="pwd">
+                                    <div class="form-group ">
+                                        @Html.LabelFor(m => m.ConformPassword, "Conform Password", new { @class = "password" })
+                                        @Html.ValidationMessageFor(m => m.ConformPassword, "Conform Password is Required")
+                                        @Html.TextBoxFor(m => m.ConformPassword, new { @class = "form-control pwd", @placeholder = "RE-Enter your  password", type = "password" })
+
+                                        <span toggle="#ConformPassword" class="eye field-icon toggle-password">
+                                            <img src="../../Content/Front/images/eye.png" alt="eye">
+                                        </span>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12 col-sm-12">
+                                    <button type="submit" class="btn btn-block btn-general">Sign-up</button>
+                                </div>
+                            }
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div id="login-link">
+                                        <p class="text-center">Already Have an Account? @Html.ActionLink("Login", "Login", "User")</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../../Content/Front/js/jquery.min.js"></script>
+    <script src="../../Content/Front/js/bootstrap.min.js"></script>
+    <script src="../../Content/Front/js/script.js"></script>
+</body>
+</html>

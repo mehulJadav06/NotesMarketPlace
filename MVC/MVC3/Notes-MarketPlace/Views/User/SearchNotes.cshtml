@@ -1,0 +1,338 @@
+﻿@model Notes_MarketPlace.Models.SearchNotes 
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes-Marketplace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../Content/Front/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../Content/Front/css/Search-Notes/Search-Notes.css">
+    <link rel="stylesheet" href="../../Content/Front/css/Search-Notes/responsive.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand"  href='@Url.Action("Home", "User")' >
+                    <img src="../../Content/Front/images/user-profile/navbarbanner.png" alt="logo" class="img-responsive">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">&#9776;</span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    @if (Session["UserID"] == null)
+                    {
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("SearchNotes", "User")'>Search<span class="spacing">Notes</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("Login", "User")'>Sell<span class="spacing">Your</span><span class="spacing">Notes</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("Login", "User")'>Buyer<span class="spacing">Requests</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("FAQ", "User")'>FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("ContactUs", "User")'>Contact<span class="spacing">Us</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <form class="form-inline">
+                                    <a class="nav-link" href='@Url.Action("Login", "User")'><button class="btn btn-outline-success btn-navbar" type="button">Login</button></a>
+                                </form>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("SearchNotes", "User")'>Search<span class="spacing">Notes</span></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("Dashboard", "User")'>Sell<span class="spacing">Your</span><span class="spacing">Notes</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("BuyerRequest", "User")'>Buyer<span class="spacing">Requests</span></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("FAQ", "User")'>FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("ContactUs", "User")'>Contact<span class="spacing">Us</span></a>
+
+                            </li>
+                            <li class="nav-item dropdown">
+                                @if (Session["Profile"] != null)
+                                {
+                                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src='~/UploadFiles/@Session["Profile"]' alt="client" class="rounded-circle seller">
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src="~/Content/Admin/images/Dashboard/user-img.png" alt="client" class="rounded-circle seller">
+                                    </a>
+                                }
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href='@Url.Action("UserProfile", "User")'>My Profile</a>
+                                <a class="dropdown-item" href='@Url.Action("MyDownloads", "User")'>My Download</a>
+                                <a class="dropdown-item" href='@Url.Action("MySoldNotes", "User")'>My Sold Notes</a>
+                                <a class="dropdown-item" href='@Url.Action("MyRejectedNotes", "User")'>My Rejected Notes</a>
+                                <a class="dropdown-item" href='@Url.Action("ChangePassword", "User")'>Change Password</a>
+                            </div>
+                            </li>
+                            <li class="nav-item btnn">
+                                <form class="form-inline">
+                                    <a class="nav-link" href='@Url.Action("LogOut", "User")'><button class="btn btn-outline-success btn-navbar" type="button">Logout</button></a>
+                                </form>
+                            </li>
+                        </ul>
+                    }
+                </div>
+            </div>
+        </nav>
+
+
+    </header>
+    <section id="Title">
+        <div class="content-box-lg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div id="title" class="text-center">
+                            <h2>Search Notes</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="Main-box">
+        <div class="container">
+            <section id="search-notes">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="heading">
+                            <h2>Search and Filter notes</h2>
+                        </div>
+                    </div>
+                </div>
+                <div id="search-boxes">
+                    <div class="row">
+                        <div class="search-box">
+                            <div class="col-md-12 col-sm-12 col-12 no-padding">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="search" placeholder="Search Notes here...">
+                                    <span class="shift-left"><img src="../../Content/Front/images/images/search-icon.png"></span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="drop-downs">
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12">
+                                <div class="form-group">
+
+
+                                    @Html.ValidationMessageFor(m => m.TypeID)
+                                    @Html.DropDownListFor(m => m.TypeID, new SelectList(Model.types, "ID", "Name"), "Select type", new { @class = "form-control custom-select" })
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12">
+                                <div class="form-group">
+
+                                    @Html.ValidationMessageFor(m => m.CategoryID)
+                                    @Html.DropDownListFor(m => m.CategoryID, new SelectList(Model.categories, "ID", "Name"), "Select Category", new { @class = "form-control custom-select" })
+
+
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12">
+                                <div class="form-group">
+
+                                    @*
+                                @Html.ValidationMessageFor(m => m.UniversityName)
+                                @Html.DropDownListFor(m => m.UniversityName, new SelectList(Model.universities, "UniversityName", "UniversityName"), "Select University", new { @class = "form-control custom-select" })
+                                    *@
+                                    @Html.LabelFor(m => m.UniversityID1, "")
+                                    @Html.DropDownListFor(m => m.UniversityID1, ViewBag.countryobj as SelectList, "Select University", new { @class = "form-control custom-select" })
+
+                            
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12">
+                                <div class="form-group">
+
+                                    @Html.LabelFor(m => m.CourseID1, "")
+                                    @Html.DropDownListFor(m => m.CourseID1, ViewBag.courseobj as SelectList, "Select Course", new { @class = "form-control custom-select" })
+
+
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12">
+                                <div class="form-group">
+
+                                    @Html.ValidationMessageFor(m => m.CountryID)
+                                    @Html.DropDownListFor(m => m.CountryID, new SelectList(Model.countries, "ID", "Name"), "Select Country", new { @class = "form-control custom-select" })
+
+
+
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <select id="rating" class="form-control custom-select">
+                                        <option selected>Select rating</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="book-heading">
+                            <h3>Total @Model.TotalRecords Notes</h3>
+                        </div>
+                    </div>
+                </div>
+                <div id="books">
+
+                    <!-- Partial html-->
+                </div>
+
+            </div>
+</section>
+    <hr>
+    <footer>
+        <div class="content-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <p>
+                            Copyright &copy; Tatvasoft All rights Reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-12 social-list-div">
+                        <ul class="social-list">
+                            <li><a href="#"><img src="../../Content/Front/images/images/facebook.png"></a></li>
+                            <li><a href="#"><img src="../../Content/Front/images/images/twitter.png"></a></li>
+                            <li><a href="#"><img src="../../Content/Front/images/images/linkedin.png"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+        <script src="../../Content/Front/js/jquery.min.js">
+        </script>
+        <script src="~/Scripts/jquery-3.4.1.js"></script>
+
+
+        <!--Ajax Js-->
+
+
+        <script src="../../Content/Front/js/jplist.core.min.js"></script>
+        <script src="../../Content/Front/js/jplist.pagination-bundle.min.js"></script>
+        <script src="../../Content/Front/js/jplist.textbox-filter.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                bindSearchNote();
+            });
+            $("#TypeID").on("change", function () {
+                bindSearchNote();
+            });
+            $("#CategoryID").on("change", function () {
+                bindSearchNote();
+            });
+            $("#UniversityID1").on("change", function () {
+                bindSearchNote();
+            });
+            $("#CourseID1").on("change", function () {
+                bindSearchNote();
+            });
+            $("#RatingID1").on("change", function () {
+                bindSearchNote();
+            });
+            $("#CountryID").change(function () {
+                alert("Hii");
+                bindSearchNote();
+            });
+            $("#search_filter").keyup(function () {
+                bindSearchNote();
+            });
+            function bindSearchNote() {
+                //debugger
+                var FK_Type_val = $("#TypeID").val();
+                var FK_Course_val = $("#CourseID1").val();
+                var FK_Country_val = $("#CountryID").val();
+                var FK_University_val = $("#UniversityID1").val();
+                var FK_Category_val = $("#CategoryID").val();
+                var FK_Searchdata_val = $("#search_filter").val();
+                var FK_Ratings_val = $("#RatingID1").val();
+                var pageSize = "9"; /*$("#DivSearchNotes .jplist-select").length > 0 ? $("#DivSearchNotes .jplist-select option:selected").attr("data-number") : "2";*/
+                var pageNumber = $("#books .jplist-pagination").length > 0 && $("#books .jplist-pagination .jplist-current").val() != "" ? $("#books .jplist-pagination .jplist-current").val() : "1";
+                //debugger
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("FilterNotes", "User")',
+                    data: { FK_Type: FK_Type_val, FK_Course: FK_Course_val, FK_Country: FK_Country_val, FK_University: FK_University_val, FK_Category: FK_Category_val, FK_Searchdata: FK_Searchdata_val, FK_Ratings: FK_Ratings_val ,PageNumber: pageNumber, PageSize: pageSize },
+
+                    //data is an object(just para type)
+                    success: function (result) {
+                        //debugger
+                        $("#books").replaceWith(result);
+                        //$("#books_filter").replaceWith(result);
+                        $("#books .jplist-pagination").find("button").bind("click", function (event) {
+                            //debugger
+                            $("#books .jplist-pagination").find("button").removeClass("jplist-current");
+                            $(this).addClass("jplist-current");
+                            //debugger
+                            bindSearchNote();
+                        });
+                        //$("#DivSearchNotes .jplist-select").unbind();
+                        $("#books .jplist-select").bind("change", function (event) {
+
+                            //$("#book_filter .jplist-pagination").remove();
+                            $("#books .jplist-pagination").remove();
+                            bindSearchNote();
+                        });
+                    },
+                    error: function (err) {
+                        console.log(err.statusText);
+                        alert(err.statusText);
+                    }
+                });
+            }
+        </script>
+    <script src="../../Content/Front/js/bootstrap.min.js"></script>
+    <script src="../../Content/Front/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+@media (min-width:992px) and (max-width:1199px) {
+    .navbar-nav {
+        padding-left: 132px;
+    }
+
+    ul.navbar-nav > li > a {
+        font-family: "Open Sans", sans-serif;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18px;
+        letter-spacing: 1px;
+
+    }
+
+    .btn-navbar {
+        margin-left: 15px;
+    }
+
+    .btn-seller {
+        margin-left: 24%;
+    }
+
+    #seller-description p {
+        margin-top: 47px;
+    }
+}
+
+@media (max-width:991px) {
+    .navbar-nav {
+        padding-left: 0px;
+    }
+
+    ul.navbar-nav > li > form {
+        margin-left: 0px;
+    }
+
+    .btn-navbar {
+        margin-left: 0;
+        background-color: #6255a5;
+        color: #fff;
+    }
+
+    nav .container {
+        padding-right: 0;
+        margin-right: 0;
+        margin-left: 35px;
+        padding-left: 0;
+    }
+
+
+    .content-box {
+        padding-top: 30px;
+    }
+
+    #download-logo,
+    #seller-logo {
+        padding: 37px;
+        margin-left: 35%;
+    }
+
+    #download-description {
+        text-align: center;
+        margin-left: 10px;
+    }
+
+    #seller-description {
+
+        margin-left: 25%;
+    }
+
+    #seller-description h2 {
+        margin-left: 75px;
+    }
+
+    #download-description p,
+    #seller-description p {
+        text-align: center;
+    }
+
+    #seller-description p {
+        margin-left: -15px;
+        margin-top: 17px;
+    }
+
+    .btn-seller {
+        margin-left: 40%;
+    }
+
+    .btn-download {
+        margin-left: 34%;
+    }
+    
+    .client-img {
+        height: 70px ;
+        width: 70px ;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width:768px) {
+    .navbar-nav {
+        padding-left: 0px;
+    }
+    nav .container {
+        margin-right: 0;
+        margin-left: 0;
+        max-width: 100%;
+    }
+
+    ul.navbar-nav > li > form {
+        margin-left: 0px;
+    }
+
+    .btn-navbar {
+        margin-left: 0;
+        background-color: #6255a5;
+        color: #fff;
+    }
+
+    #download-logo,
+    #seller-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+
+    }
+
+    #download-description {
+        text-align: center;
+        margin-left: 0;
+    }
+    #seller-description h2{
+        margin-left:0px;
+    }
+    #seller-description {
+        text-align: center;
+        margin-left: -17px;
+    }
+
+    #download-description p,
+    #seller-description p {
+        margin-left: 0;
+    }
+
+    #download-description p span,
+    #seller-description p span {
+        margin-left: 0px;
+    }
+
+    .btn-download,
+    .btn-seller {
+        margin-left: 32%;
+        width: 172px;
+    }
+
+    footer p {
+        text-align: center;
+    }
+
+    footer .social-list {
+        text-align: center !important;
+    }
+}
+@media(max-width:575px){
+    .navbar-brand{
+        width: 50%;
+    }
+    .navbar-brand img{
+        width: 100%;
+    }
+
+    .horizontal-heading h2{
+        font-size: 24px;
+        line-height: 28px;
+    }
+    #heading h2{
+        font-size: 32px;
+        line-height: 36px;
+    }
+    #heading p{
+        font-size: 18px;
+        line-height: 22px;
+    }
+}

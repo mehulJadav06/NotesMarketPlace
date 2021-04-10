@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Notes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/add-notes/add-notes.css">
+    <link rel="stylesheet" href="css/add-notes/responsive.css">
+</head>
+<body>
+ <header>
+        <nav class="navbar navbar-expand-lg bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="images/user-profile/navbarbanner.png" alt="logo" class="img-responsive">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">&#9776;</span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="Search-Notes.html">Search<span class="spacing">Notes</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="My-Soldnotes.html">Sell<span class="spacing">Your</span><span class="spacing">Notes</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Buyer-Requests.html">Buyer<span class="spacing">Requests</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="FAQ.html">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Contact-us.html">Contact<span class="spacing">Us</span></a>
+
+                        </li>
+                        <li class="nav-item">
+                            <img src="images/Dashboard/user-img.png" alt="client" class="rounded-circle seller">
+                        </li>
+
+                        <li class="nav-item">
+                            <form class="form-inline">
+
+                                <button class="btn btn-outline-success btn-navbar" type="submit">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section id="Title">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 id="title">Add Notes</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <section id="add-notes">
+            <form>
+                <div class="basic-notes-form">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12">
+                            <div class="header">
+                                <h2>Basic Notes Details</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label for="notes-title">Title*</label>
+                                <input type="text" class="form-control" id="notes-title"
+                                       placeholder="Enter your notes title">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label for="Category">Category*</label>
+                                <select class="form-control custom-select" id="category">
+                                    <option>Select your Category</option>
+                                </select>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-12">
+                                    <label>Display Picture</label>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-12 text-center">
+                                    <div class="add-border">
+                                        <label for="dp" class="upload-profile">
+                                            <img src="images/images/upload-file.png">
+                                            <p style="color: lightgray;">Upload a Picture</p>
+                                            <input type="file" id="dp" style="display: none;">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-12">
+                                    <label>Upload Picture</label>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-12 text-center">
+                                    <div class="add-border">
+                                        <label for="upload-notes" class="upload-profile">
+                                            <img src="images/images/upload-note.png">
+                                            <p style="color: lightgray;">Upload a Picture</p>
+                                            <input type="file" id="upload-notes" style="display: none;">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label for="note-type">Type</label>
+                                <select class="form-control custom-select" id="note-type">
+                                    <option>Select your notes type</option>
+                                </select>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label for="note-pages">Pages*</label>
+                                <select class="form-control custom-select" id="note-pages">
+                                    <option>Enter number of note pages</option>
+                                </select>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1" id="description">Description*</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1"
+                                          placeholder="Enter your Description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="institute-information-form">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12">
+                            <div class="header">
+                                <h2>Institute Details</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label for="country">Country*</label>
+                                <select class="form-control custom-select" id="country">
+                                    <option>Select your Country</option>
+                                </select>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label for="institute-name">Institution name</label>
+                                <input type="text" class="form-control" id="institute-name"
+                                       placeholder="Enter your institute name">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="institute-information-form">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12">
+                            <div class="header">
+                                <h2>Institute Details</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label for="country">Country*</label>
+                                <select class="form-control custom-select" id="country">
+                                    <option>Select your Country</option>
+                                </select>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label for="institute-name">Institution name</label>
+                                <input type="text" class="form-control" id="institute-name"
+                                       placeholder="Enter your institute name">
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="form-group">
+                                <label for="proffessor">Proffessor/lecturer</label>
+                                <input type="text" class="form-control" id="professor"
+                                       placeholder="Enter your proffessor name">
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="selling-information">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12">
+                            <div class="header">
+                                <h2>Selling Information</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-12">
+
+                                    <label for="sell" id="#sell">Sell For*</label>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-12 sell-info" id="radio-btn-line">
+                                    <input type="radio" id="free" name="sell" value="free">
+                                    <label for="free" id="free-lbl">Free</label>
+                                    <input type="radio" id="paid" name="sell" value="paid">
+                                    <label for="paid" id="paid-lbl">Paid</label>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-12 sell-info">
+                                    <label for="sell-price">Sell Price</label>
+                                    <input type="text" class="form-control" id="sell-price"
+                                           placeholder="Enter your price">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12 sell-info">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-12">
+                                    <label>Upload a file</label>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-12 text-center">
+                                    <div class="add-border">
+                                        <label for="upload-file" class="upload-profile">
+                                            <img src="images/images/upload-file.png">
+                                            <p style="color: lightgray;">Upload a Picture</p>
+                                            <input type="file" id="upload-file" style="display: none;">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button">
+                    <button type="button" class="btn btn-save">SAVE</button>
+                    <button type="button" class="btn btn-publish">PUBLISH</button>
+                </div>
+            </form>
+
+
+        </section>
+    </div>
+    
+   <hr>
+    <footer>
+        <div class="content-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <p>
+                            Copyright &copy; Tatvasoft All rights Reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-12 social-list-div">
+                        <ul class="social-list">
+                            <li><a href="#"><img src="images/images/facebook.png"></a></li>
+                            <li><a href="#"><img src="images/images/twitter.png"></a></li>
+                            <li><a href="#"><img src="images/images/linkedin.png"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

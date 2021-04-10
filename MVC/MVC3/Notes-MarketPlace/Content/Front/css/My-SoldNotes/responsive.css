@@ -1,0 +1,176 @@
+@media(max-width:1199px) and (min-width:992px) {
+    nav .container{
+        margin-left: 0px;
+        padding-left: 5px;
+    }
+    .navbar-nav {
+        padding-left: 20px;
+    }
+
+    .navbar-brand {
+        width: fit-content;
+    }
+
+    .nav-item img{
+        margin-left:7px;
+    }
+    ul.navbar-nav > li > a {
+        font-family: "Open Sans", sans-serif;
+        color: #333333;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18px;
+        letter-spacing: 1px;
+
+    }
+
+
+    .seller {
+        margin-left: 10px;
+    }
+
+    .btn-navbar {
+        margin-left: 10px;
+    }
+}
+
+
+@media(max-width:991px) and (min-width:768px) {
+    #search {
+        width: 250px;
+    }
+
+    .heading {
+
+        margin-top: 15px;
+    }
+
+    .navbar-nav {
+        padding-left: 0px;
+    }
+
+    .btn-navbar {
+
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+    .nav-item img{
+        margin-left:0px;
+    }
+
+    .navbar {
+        display: block;
+    }
+
+    .navbar-nav {
+        padding-left: 0px;
+    }
+
+    .navbar-nav li {
+        margin: 5px 0px;
+    }
+
+    .seller {
+        margin-left: 0px;
+    }
+
+
+    .form-inline {
+        float: left;
+    }
+
+
+}
+
+
+@media(max-width:767px) {
+    .navbar-nav {
+        padding-left: 0;
+    }
+
+    .seller {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    .navbar-nav {
+        padding-left: 0px;
+    }
+
+    .btn-navbar {
+        margin-top: 15px;
+        margin-left: 0px;
+    }
+    .nav-item img{
+        margin-left:0px;
+    }
+    #search {
+        width: 200px;
+    }
+
+    .heading {
+
+        margin-top: 15px;
+    }
+
+    .arrow-left {
+        margin-right: 15px;
+    }
+
+    .arrow-right {
+        margin-left: 0px;
+    }
+
+    ul.pagination li:nth-child(3) a,
+    ul.pagination li:nth-child(4) a,
+    ul.pagination li:nth-child(5) a,
+    ul.pagination li:nth-child(6) a {
+        margin-left: 15px;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+
+    .form-inline {
+        float: left;
+    }
+
+    footer p {
+        text-align: center;
+    }
+
+    footer .social-list {
+        text-align: center;
+    }
+
+    @media(max-width:575px) {
+        .navbar-brand {
+            width: 75%;
+        }
+
+        .navbar-brand img {
+            width: 100%;
+        }
+
+        #search {
+            width: 280px;
+        }
+
+        .form-inline {
+            float: left;
+        }
+
+        .navbar-toggler {
+            position: fixed;
+            right: 0px;
+            top: 0px;
+        }
+
+    }
+
+    @media(max-width:394px) {
+        #search {
+            width: 180px;
+        }
+    }

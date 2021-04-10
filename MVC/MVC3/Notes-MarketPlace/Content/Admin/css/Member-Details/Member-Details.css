@@ -1,0 +1,256 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+nav {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.navbar-nav {
+    padding-left: 200px;
+}
+
+ul.navbar-nav > li > a,
+ul.navbar > li > button {
+    font-family: "Open Sans", sans-serif;
+    color: #333333;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 1px;
+
+}
+
+
+.navbar-toggler-icon {
+    background: none;
+    color: #6255a5;
+    font-size: 35px;
+    margin-right: 5px;
+}
+
+.btn-navbar {
+    color: #6255a5;
+    background-color: #6255a5;
+    width: 89px;
+    height: 40px;
+    border-radius: 3px;
+    color: #fff;
+    font-family: "open Sans", sans-serif;
+    font-size: 13px;
+    margin-left: 30px;
+}
+
+.nav-item {
+    margin-top: 10px;
+}
+
+.nav-item-img {
+    margin-top: 0px;
+}
+
+.spacing {
+    margin-left: 2px;
+}
+
+.seller {
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+}
+
+#padding-navbar {
+    padding-top: 60px;
+}
+
+nav button:focus {
+    outline: none;
+}
+
+
+/**** headers ****/
+#Members-Detail {
+    margin-top: 110px;
+}
+
+
+.name {
+    font-family: "open sans", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333333;
+}
+
+.value {
+    font-family: "open sans", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    color: #6255a5;
+}
+
+.table-header h2 {
+    font-family: "open sans", sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 26px;
+    color: #6255a5;
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+
+#header h2 {
+    font-family: "open sans", sans-serif;
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin-bottom: 30px;
+}
+
+/*** table ***/
+
+table {
+    margin: 30px 0px;
+    border: 1px solid #d1d1d1;
+}
+
+tr {
+    height: 60px;
+}
+tr:hover{
+    -webkit-box-shadow: 0px 2px 4px #e06547;
+    -moz-box-shadow: 0px 2px 4px #e06547;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
+ }
+thead tr th {
+    color: #333333;
+    font-family: "open sans", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+tr td:nth-child(2) {
+    color: #6255a5;
+}
+
+tr th:nth-child(1),
+tr th:nth-child(5),
+tr th:nth-child(6) {
+    text-align: center;
+}
+
+tr td:nth-child(1),
+tr td:nth-child(5),
+tr td:nth-child(6) {
+    text-align: center;
+}
+
+/*** Pagination ***/
+.page-link {
+    border: none;
+}
+
+.pagination a.active {
+    background-color: #6255a5;
+    color: white;
+    border: 1px solid #4CAF50;
+    width: 34px;
+    height: 34px;
+    color: #fff;
+    font-family: "open sans", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    border-radius: 50%;
+
+}
+
+.pagination a {
+    color: #333333;
+    font-family: "open sans", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+
+}
+
+.pagination li:nth-child(3) a,
+.pagination li:nth-child(4) a,
+.pagination li:nth-child(5) a,
+.pagination li:nth-child(6) a {
+    margin-left: 20px;
+}
+
+#pagination {
+    margin-top: 50px;
+}
+
+.pagination {
+    justify-content: center;
+}
+
+.arrow-left img {
+    transform: rotate(90deg);
+    margin-right: 20px;
+}
+
+.arrow-right img {
+    transform: rotate(270deg);
+    margin-right: 20px;
+}
+
+/*** Drop-Downs ***/
+a.dropdown-item {
+    font-family: "open sans", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #333333;
+    padding-bottom: 10px;
+}
+
+.dropdown-menu {
+    padding: 10px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    left: -140px;
+    top: -10px;
+    width: 150px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+.dropbtn {
+    border: none;
+    background: #fff;
+}

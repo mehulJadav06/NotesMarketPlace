@@ -1,0 +1,386 @@
+﻿@model Notes_MarketPlace.Models.NotesDetail
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes-Marketplace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../Content/Admin/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../Content/Admin/css/Notes-detail/Notes-detail.css">
+    <link rel="stylesheet" href="../../Content/Admin/css/Notes-detail/responsive.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href='@Url.Action("Dashboard", "Admin")'>
+                    <img src="~/Content/Admin/images/user-profile/navbarbanner.png" alt="logo" class="img-responsive">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">&#9776;</span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("Dashboard", "Admin",new { })'>Dashboard</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Notes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown-1">
+                                <a class="dropdown-item" href='@Url.Action("NotesUnderReview", "Admin")'>Notes Under Review</a>
+                                <a class="dropdown-item" href='@Url.Action("PublishNotes", "Admin")'>Published Notes</a>
+                                <a class="dropdown-item" href='@Url.Action("DownloadNotes", "Admin")'>Downloaded Notes</a>
+                                <a class="dropdown-item" href='@Url.Action("RejectedNotes", "Admin")'>Rejected Notes</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("Members", "Admin")'>Members</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Reports
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown-2">
+                                <a class="dropdown-item" href='@Url.Action("SpamReports", "Admin")'>Spam Reports</a>
+                            </div>
+
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown-3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Setting
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown-3">
+                                @if ((bool)Session["SuperAdmin"])
+                                {
+                                    <a class="dropdown-item" href='@Url.Action("ManageAdmin", "Admin")'>Manage Administarator</a>
+                                }
+
+                                <a class="dropdown-item" href='@Url.Action("ManageCategory", "Admin")'>Manage Category</a>
+                                <a class="dropdown-item" href='@Url.Action("ManageType", "Admin")'>Manage Type</a>
+                                <a class="dropdown-item" href='@Url.Action("ManageCountry", "Admin")'>Manage Country</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown nav-item-img">
+                            @if (Session["Profile"] != null)
+                            {
+                                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src='~/UploadFiles/@Session["Profile"]' alt="client" class="rounded-circle seller">
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="~/Content/Admin/images/Dashboard/user-img.png" alt="client" class="rounded-circle seller">
+                                </a>
+                            }
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href='@Url.Action("MyProfile", "Admin")'>Update Profile</a>
+
+                                <a class="dropdown-item" href='@Url.Action("ChangePassword", "User")'>Change Password</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href='@Url.Action("LogOut", "User")' style="color: #6255a5;">Logout</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <form class="form-inline" style="float: none;">
+                                <a href='@Url.Action("LogOut", "User")'><button class="btn btn-outline-success btn-navbar" href='@Url.Action("LogOut", "User")' type="button">Logout</button></a>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <section id="Notes-details">
+            <div class="row">
+                <div id="note-detail">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12" id="title-notes-detail">
+                            <h3>Notes-Details</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12" id="book-image">
+                            <img src="~/UploadFiles/@Model.sellerNote.DisplayPicture" alt="Book-1" class="img-responsible">
+                        </div>
+                        <div class="col-lg-4 col-md-8 col-sm-6 col-12">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-12" id="book-name">
+                                    <h2>@Model.sellerNote.Title</h2>
+                                    <p>@Model.category</p>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-12">
+                                    <p>@Model.sellerNote.Description</p>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-12">
+
+                                        @if (!Model.sellerNote.IsPaid)
+                                        {
+                                            using (Html.BeginForm("FreeNote", "User", new { id = Model.ID }, FormMethod.Post))
+                                            {
+                                                <button type="submit" id="freeDownload" class="btn btn-block btn-general">
+                                                    Download
+                                                </button>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <button type="submit" id="paidDownload" class="btn btn-block btn-general">
+                                                Download/ @Model.sellerNote.SellingPrice $
+                                            </button>
+                                        }
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5 col-md-12 col-sm-12 col-12">
+                            <div id="detail">
+                                <div>Institution:<span class="info">@Model.sellerNote.UniversityName</span></div>
+                                <div>Country:<span class="info">@Model.country</span></div>
+                                <div>Course Name:<span class="info">@Model.sellerNote.Course</span></div>
+                                <div>Course Code:<span class="info">@Model.sellerNote.CourseCode</span></div>
+                                <div>Professor:<span class="info">@Model.sellerNote.Professor</span></div>
+                                <div>Number of Pages:<span class="info">@Model.sellerNote.NumberOfPages</span></div>
+                                <div>Aproved Date:<span class="info">November 25 2020</span></div>
+                                <div>
+                                    Rating:
+                                    <span class="info">
+                                        <span id="rate-book" class="rate">
+                                            @if (Model.count > 0)
+                                            {
+                                                var i = 0;
+                                                for (; i <= Model.rate - 2; i += 2)
+                                                {
+                                                    <span id="1star"><img src="../../Content/Front/images/images/star.png"></span>
+                                                }
+                                                if (i != Model.rate)
+                                                {
+                                                    <span id="1star">
+                                                        <img src="~/Content/Front/images/images/star-white.png" />
+                                                    </span>
+                                                    i += 1;
+                                                }
+                                                for (; i <= 8; i += 2)
+                                                {
+                                                    //No color star
+                                                    <span id="1star">
+                                                        <img src="~/Content/Front/images/images/star-white.png" />
+                                                    </span>
+                                                }
+
+
+                                            }
+
+
+                                        </span>
+
+                                        @Model.count Reviews
+                                    </span>
+                                </div>
+                                <div id="inappropriate">@Model.userReport Users marked this note as inappropriate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div id="preview-review">
+                <div class="row">
+                    @if (Model.sellerNote.NotesPreview != null)
+                    {
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div id="note-preview">
+                                <h2>Notes Preview</h2>
+                            </div>
+                            <div id="book-preview-pdf">
+                                <div id="Iframe-Cicis-Menu-To-Go" class="set-margin-cicis-menu-to-go set-padding-cicis-menu-to-go set-border-cicis-menu-to-go set-box-shadow-cicis-menu-to-go center-block-horiz">
+                                    <div class="responsive-wrapper
+     responsive-wrapper-padding-bottom-90pct" style="-webkit-overflow-scrolling: touch; overflow: auto;">
+                                        <iframe src="~/UploadFile/@Model.sellerNote.NotesPreview">
+                                            <p style="font-size: 110%;">
+                                                <em>
+                                                    <strong>ERROR: </strong>
+                                                    An &#105;frame should be displayed here but your browser version
+                                                    does not support &#105;frames.
+                                                </em> Please update your browser
+                                                to its most recent version and try again, or access the file <a href="~/UploadFile/@Model.sellerNote.NotesPreview">
+                                                    with
+                                                    this link.
+                                                </a>
+                                            </p>
+                                        </iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @if (Model.count > 0)
+                    {
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div id="Customer-Reviews">
+                                <h2>Customers Reviews</h2>
+                            </div>
+                            <div id="customers-reviews" style="overflow-y:auto">
+                                @{
+                                    int j = 0;
+                                    foreach (var review in Model.review)
+                                    {
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-12">
+                                                <div class="row">
+                                                    <div class="col-md-2 col-sm-2 col-1">
+                                                        <img src="~/UploadFiles/@review.userProfiles.ProfilePicture" alt="Customer" class="rounded-circle">
+                                                    </div>
+
+                                                    <div class="col-md-10 col-sm-10 col-11 customers">
+                                                        <a href='@Url.Action("NoteReviewDelete", "Admin", new { Id = review.review.ID })'><span style="float: right;"><img src="~/Content/Admin/images/images/delete.png" style="width:18px;height:22px;"></span></a>
+                                                        <h4>
+                                                            @review.users.FirstName  @review.users.LastName<h4>
+                                                                <div>
+                                                                    <span class="info">
+                                                                        <span id="rate-book" class="rate">
+                                                                            @{
+                                                                                var k = 0;
+                                                                                for (; k < review.review.Ratings; k += 1)
+                                                                                {
+                                                                                    <span id="1star"><img src="~/Content/Front/images/images/star.png"></span>
+                                                                                }
+
+                                                                                for (; k < 5; k += 1)
+                                                                                {
+                                                                                    <span id="1star"><img src="~/Content/Front/images/images/star-white.png" /></span>
+                                                                                }
+                                                                            }
+                                                                        </span>
+                                                                    </span>
+                                                                </div>
+                                                                <p>@review.review.Comments</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+
+
+        </section>
+
+    </div>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <div class="content-box-lg">
+                        <div id="close-btn">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div><br>
+                        <div id="success-logo" class="text-center">
+                            <img src="../../Content/Front/images/notedetails/SUCCESS.png">
+                            <h4 class="modal-title">Thank you For Purchasing! </h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-12">
+                                <div id="client-name">
+                                    <h4>Dear @Model.userName</h4>
+                                    <p>AS this is Paid Notes - you need to pay to seller @Model.sellerName offline.We Will send him an email that you want to download this note.He may contact you further for payment process completion.</p>
+                                    <p>Incase, you have urgency,</p>
+                                    <p>Please contact us on +9195377345959</p>
+                                    <p>Once you have received payment and ackknowledge us - selected notes you can see over my downloads tab for download. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <p>Have a good day</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <footer>
+        <div class="content-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <p>
+                            Copyright &copy; Tatvasoft All rights Reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-12 social-list-div">
+                        <ul class="social-list">
+                            <li><a href="#"><img src="../../Content/Front/images/images/facebook.png"></a></li>
+                            <li><a href="#"><img src="../../Content/Front/images/images/twitter.png"></a></li>
+                            <li><a href="#"><img src="../../Content/Front/images/images/linkedin.png"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script>
+
+        $("#paidDownload").click(function () {
+            if (confirm("Are you really wanna Download this Paid Note")) {
+                $(this).attr("data-toggle", "modal").attr("data-target", "#myModal");
+                $.ajax({
+                    type: "post",
+                    dataType: "json",
+                    url: '@Url.Action("PaidNote", "User")',
+                    data: { id: @Model.ID },
+                    sucess: function (res) {
+                        alert("Done Bro...");
+                    },
+                    error: function (err) {
+                        alert(err.responseText);
+                    }
+                });
+                return true;
+            }
+            else {
+                return false;
+            }
+        });
+    </script>
+    <script src="../../Content/Admin/js/jquery.min.js"></script>
+    <script src="../../Content/Admin/js/bootstrap.min.js"></script>
+    <script src="../../Content/Admin/js/script.js"></script>
+</body>
+</html>

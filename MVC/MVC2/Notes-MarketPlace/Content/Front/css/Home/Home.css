@@ -1,0 +1,334 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+#home-header {
+    background-image: url('../../images/home/banner-with-overlay.jpg');
+    background-repeat: no-repeat;
+    height: 620px;
+    background-size: cover;
+
+
+}
+
+ul.navbar-nav > li > a {
+    font-family: "Open Sans", sans-serif;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 1px;
+
+}
+
+nav button:focus {
+    outline: none;
+}
+
+ul.navbar-nav > li > form {
+    margin-left: 15px;
+}
+
+.navbar-toggler-icon {
+    background: none;
+    color: #6255a5;
+    font-size: 37px;
+}
+
+.navbar-toggler {
+    position: fixed;
+    right: 0;
+    top: 10px;
+}
+
+.navbar-nav {
+    padding-left: 300px;
+
+}
+
+.spacing {
+    margin-left: 2px;
+}
+
+.btn-navbar {
+    background-color: #ffffff;
+    width: 89px;
+    height: 40px;
+    border-radius: 3px;
+    color: #6255a5;
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+    line-height: 22px;
+    padding-top: 3px;
+}
+
+
+#below-nav {
+    padding: 16% 0;
+}
+
+#heading h2 {
+    font-family: "Open Sans", sans-serif;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 54px;
+    color: #fff;
+}
+
+#heading p {
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.btn-learn-more {
+    border: 1px solid #fff;
+    width: 172px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: "Open Sans", sans-serif;
+    line-height: 22px;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.content-box {
+    padding-top: 60px;
+}
+
+.horizontal-heading h2 {
+    font-family: "Open Sans", sans-serif;
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+}
+
+#about-right p:first-child {
+    margin-bottom: 50px;
+}
+
+#download-seller {
+    margin-top: 60px;
+    background-color: #f4f4f4;
+
+}
+
+
+#download-logo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    padding: 40px;
+    border: 1px solid #fff;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.08);
+    margin-left: 50%;
+}
+
+#seller-logo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    padding: 8% 8%;
+    border: 1px solid #fff;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.08);
+    margin-left: 25%;
+}
+
+#download-description {
+    margin-left: 35%;
+    margin-top: 30px;
+
+}
+
+#seller-description {
+    margin-left: 33%;
+    margin-top: 30px;
+
+}
+
+#seller-description h2 {
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+}
+
+
+#download-description h2 {
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+}
+
+#download-description p {
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333333;
+    margin-top: 20px;
+    margin-left: 15%;
+}
+
+#seller-description p {
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333333;
+    margin-top: 20px;
+    margin-left: -15%;
+}
+
+#seller-description p span {
+    margin-left: 12%;
+}
+
+#download-description p span {
+    margin-left: 13%;
+}
+
+.btn-download {
+    background-color: #6255a5;
+    width: 172px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: "Open Sans", sans-serif;
+    line-height: 18px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-left: 45%;
+    margin-bottom: 60px;
+}
+
+.btn-seller {
+    background-color: #6255a5;
+    width: 150px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: "Open Sans", sans-serif;
+    line-height: 18px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-left: 28%;
+    margin-bottom: 60px;
+}
+
+
+.customer {
+    width: 100%;
+    height: 278px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    margin-top: 30px;
+}
+
+.blog-content {
+    margin-top: 30px;
+}
+
+.client-img {
+    height: 100px;
+    width: 100px;
+}
+
+
+.client-heading h2 {
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+    color: #6255a5;
+
+}
+
+.client-heading {
+    margin-left: 20px;
+    margin-top: 2%;
+}
+
+.client-heading p {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #333333;
+}
+
+.client-description {
+    margin-top: 30px;
+}
+
+#testimonial {
+    margin-bottom: 30px;
+}
+
+/**** footer *****/
+hr {
+    margin: 10px;
+}
+
+ul.social-list {
+    padding: 0;
+    margin-top: 0px;
+}
+
+ul.social-list li {
+    display: inline-block;
+
+}
+
+ul.social-list li a {
+    border: 1px solid #fff;
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    line-height: 35px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 400ms linear;
+}
+
+ul.social-list li:nth-child(1) a {
+    background: #6255a5;
+    border-color: transparent;
+
+}
+
+ul.social-list li:nth-child(2) a {
+    background: #6255a5;
+    border-color: transparent;
+
+}
+
+ul.social-list li:nth-child(3) a {
+    background: #6255a5;
+    border-color: transparent;
+    padding-bottom: 5px !important;
+}
+
+footer .social-list {
+    text-align: right;
+}

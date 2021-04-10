@@ -1,0 +1,334 @@
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+nav{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.navbar-nav{
+    padding-left: 100px;
+}
+.nav-link{
+    padding-top:13px;
+}
+.btnn {
+    padding-top: 4px;
+}
+#navbarDropdown {
+    padding-top: 3px !important;
+}
+.seller{
+    height:40px;
+    width:40px;
+}
+ul.navbar-nav > li > a,
+ul.navbar > li > button {
+    font-family: "Open Sans",sans-serif;
+    color: #333333;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 1px;
+}
+
+.spacing{
+    margin-left: 2px;
+}
+
+.navbar-toggler-icon{
+    background: none;
+    color: #6255a5;
+    font-size:35px;
+    margin-top: 13px;
+    margin-right:5px;
+}
+.nav-item img{
+    margin-left:10px;
+}
+/** button **/
+.btn-navbar{
+    background-color: #6255a5;
+    width:89px;
+    color: #6255a5;
+    height: 40px;
+    border-radius: 3px;
+    color:#fff;
+    font-family: "open Sans", sans-serif;
+    font-size: 13px; 
+    margin-left: 20px;
+}
+nav button:focus {
+    outline: none;
+}
+/**** Title ****/
+
+.form-inline {
+    float: right;
+
+}
+.search-icon{
+    float: left;
+    position: relative;
+    z-index: 2;
+    top:-34px;
+    left: 10px;
+}
+
+  .btn-search{
+  
+    background-color: #6255a5;
+    width:100%;
+    height: 50px;
+    border-radius: 3px;
+    color:#fff;
+    font-family: "open Sans", sans-serif;
+    font-size: 18px;
+    line-height: 22px;
+          
+    
+  }
+  
+#search{
+    width: 322px;   
+    max-width: 100%;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+    padding-left: 40px;  
+  }
+
+#My-downloads {
+    margin-top: 120px;
+}
+
+.heading h2 {
+    font-family: "open sans", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+}
+
+/**** Table ****/
+.Download-Table {
+    margin-top: 20px;
+}
+
+table {
+    border: 1px solid #d1d1d1;
+}
+
+.table {
+    width: 100%;
+}
+
+tr {
+    height: 60px;
+}
+
+thead tr th {
+    color: #333333;
+    font-family: "open sans", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+tbody tr td:nth-child(2) {
+    color: #6255a5;
+}
+  tr:hover{
+    -webkit-box-shadow: 0px 2px 4px #e06547;
+    -moz-box-shadow: 0px 2px 4px #e06547;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
+  }
+
+/*** Model and Drop Down ***/
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right:-2px;
+    top: -10px;
+    width: 220px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:focus-within {
+    background-color: #ddd;
+}
+
+.dropdown:focus-within .dropdown-content {
+    display: block;
+}
+
+.dropdown:focus-within .dropbtn {
+    background-color: #3e8e41;
+}
+
+.dropbtn {
+    border: none;
+    background: #fff;
+}
+
+.modal-dialog {
+    top: 50%;
+    transform: translate(0%, -50%) !important;
+}
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 0px;
+    margin-top: -15px;
+}
+
+.rate:not(:checked) > input {
+    position: absolute;
+    top: -9999px;
+}
+
+.rate:not(:checked) > label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+
+/**** footer *****/
+ul.social-list {
+    padding: 0;
+    margin-top: 0px;
+}
+
+ul.social-list li {
+    display: inline-block;
+    
+}
+
+ul.social-list li a {
+    border: 1px solid #fff;
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    line-height: 35px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 400ms linear;
+}
+
+ul.social-list li:nth-child(1) a {
+    background: #6255a5;
+    border-color: transparent;
+     
+}
+
+ul.social-list li:nth-child(2) a {
+    background: #6255a5;
+    border-color: transparent;
+    
+}
+
+ul.social-list li:nth-child(3) a {
+    background: #6255a5;
+    border-color: transparent;
+    padding-bottom:5px !important;
+}
+footer .social-list{
+    text-align: right;
+}
+/***   Data table*/
+
+table.dataTable thead .sorting {
+    background: none !important;
+}
+/*
+table.dataTable thead .sorting_asc {
+    background: none !important;
+}
+
+*/
+
+table.dataTable thead th, table.dataTable thead td {
+    padding: 10px 18px;
+    border-bottom: none;
+}
+
+table.dataTable.no-footer {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background: none !important;
+    background-color: #6255a5 !important;
+    border-radius: 50% !important;
+    color: white !important;
+    font-family: "open sans",sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.dataTables_wrapper .dataTables_paginate {
+    display: table;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        background: none;
+        background-color: white;
+        color: #333 !important;
+        border-radius: 50%;
+        border: 1px solid white;
+        font-family: "open sans",sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        outline: none;
+    }
+
+.dataTables_wrapper .dataTables_info {
+    display: none;
+}

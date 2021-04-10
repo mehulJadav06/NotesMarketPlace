@@ -1,0 +1,154 @@
+@media(max-width:1199px) and (min-width:992px) {
+    .navbar-nav {
+        padding-left: 15px;
+    }
+
+    .navbar-brand {
+        width: fit-content;
+    }
+
+    .navbar-brand img {
+        width: 80%;
+    }
+
+    .seller {
+        margin-left: 10px;
+    }
+
+    .btn-navbar {
+        margin-left: 15px;
+    }
+}
+
+
+@media(max-width:991px) and (min-width:768px) {
+    .navbar-nav {
+        padding-left: 0;
+    }
+
+    .btn-navbar {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    .seller {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    #search {
+        width: 250px;
+    }
+
+    .heading {
+
+        margin-top: 15px;
+    }
+
+    .form-inline {
+        float: left;
+    }
+
+    .nav-item {
+        margin-top: 0px;
+    }
+}
+
+
+@media(max-width:767px) {
+    .navbar-nav {
+        padding-left: 0;
+    }
+
+    .nav-item {
+        margin-top: 0px;
+    }
+
+    .btn-navbar {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    .seller {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    #search {
+        width: 200px;
+    }
+
+    .heading {
+
+        margin-top: 15px;
+    }
+
+    .form-inline {
+        float: left;
+    }
+
+    footer .row > div {
+        text-align: center !important;
+    }
+
+    .arrow-left {
+        margin-right: 15px;
+    }
+
+    .arrow-right {
+        margin-left: 0px;
+    }
+
+    ul.pagination li:nth-child(3) a,
+    ul.pagination li:nth-child(4) a,
+    ul.pagination li:nth-child(5) a,
+    ul.pagination li:nth-child(6) a {
+        margin-left: 15px;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media(min-width:576px) and (max-width:766px) {
+    .search-icon {
+        top: 16px;
+        left: 28px;
+    }
+}
+
+@media(max-width:575px) {
+    .navbar-brand {
+        width: 75%;
+    }
+
+    .navbar-brand img {
+        width: 100%;
+    }
+
+    #search {
+        width: 280px;
+    }
+
+    .form-inline {
+        float: left;
+    }
+
+    #search {
+        width: 100%;
+    }
+
+    .navbar-toggler {
+        position: fixed;
+        right: 0px;
+        top: 0px;
+    }
+
+}
+
+@media(max-width:394px) {
+    #search {
+        width: 100%;
+    }
+}

@@ -1,0 +1,293 @@
+﻿@model IEnumerable<Notes_MarketPlace.Models.MyDownloads>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes-Marketplace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="~/Content/Front/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/Front/css/My-downloads/My-Downloads.css">
+    <link rel="stylesheet" href="~/Content/Front/css/My-downloads/responsive.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href='@Url.Action("Home", "User")' >
+                    <img src="~/Content/Front/images/user-profile/navbarbanner.png" alt="logo" class="img-responsive">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">&#9776;</span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("SearchNotes", "User")'>Search<span class="spacing">Notes</span></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("Dashboard", "User")'>Sell<span class="spacing">Your</span><span class="spacing">Notes</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("BuyerRequest", "User")'>Buyer<span class="spacing">Requests</span></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("FAQ", "User")'>FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("ContactUs", "User")'>Contact<span class="spacing">Us</span></a>
+
+                            </li>
+                            <li class="nav-item dropdown">
+                                @if (Session["Profile"] != null)
+                                {
+                                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src='~/UploadFiles/@Session["Profile"]'  alt="client" class="rounded-circle seller">
+                                    </a>
+                                }
+                                else
+                                {
+                                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="~/Content/Admin/images/Dashboard/user-img.png" alt="client" class="rounded-circle seller">
+                                </a>
+                                }
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href='@Url.Action("UserProfile", "User")'>My Profile</a>
+                                <a class="dropdown-item" href='@Url.Action("MyDownloads", "User")'>My Download</a>
+                                <a class="dropdown-item" href='@Url.Action("MySoldNotes", "User")'>My Sold Notes</a>
+                                <a class="dropdown-item" href='@Url.Action("MyRejectedNotes", "User")'>My Rejected Notes</a>
+                                <a class="dropdown-item" href='@Url.Action("ChangePassword", "User")'>Change Password</a>
+                            </div>
+                            </li>
+                            <li class="nav-item btnn">
+                                <form class="form-inline">
+                                    <a class="nav-link" href='@Url.Action("LogOut", "User")'><button class="btn btn-outline-success btn-navbar" type="submit">Logout</button></a>
+                                </form>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+    </header>
+
+    <div class="container">
+        <section id="My-downloads">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-12">
+                    <div class="heading">
+                        <h2>My Downloads</h2>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-12">
+                    <form class="form-inline">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 col-7">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                                       aria-label="Search" id="search">
+                                <img src="~/Content/Front/images/Dashboard/search.jpg" alt="search" class="search-icon">
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-5">
+                                <button class="btn btn-search " type="button">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section class="Download-Table table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">SR NO.</th>
+                        <th scope="col">NOTE TITLE</th>
+                        <th scope="col">CATEGORY</th>
+                        <th scope="col">BUYER</th>
+                        <th scope="col">SELL TYPE</th>
+                        <th scope="col">PRICE</th>
+                        <th scope="col">DOWNLOAD DATE/TIME</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int i = 0;
+
+                        foreach (var item in Model)
+                        {
+                            i += 1;
+                                        <tr>
+                                            <td scope="row">@i</td>
+                                            <td>@item.downloads.NoteTitle</td>
+                                            <td>@item.downloads.NoteCategory</td>
+                                            <td>@item.users.EmailID</td>
+                                            @if (item.downloads.IsPaid)
+                                            {
+                                                <td>Paid</td>
+                                                <td>@item.downloads.PurchasedPrice</td>
+                                            }
+                                            else
+                                            {
+                                                <td>Free</td>
+                                                <td>$0</td>
+                                            }
+
+                                            
+                                            <td>@item.downloads.ModifiedDate</td>
+                                            <td><a href="@Url.Action("NotesDetail", "User",new { id = item.downloads.NoteID})"><i><img src="~/Content/Front/images/eye.png"></i></a></td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="dropbtn"><i><img src="~/Content/Front/images/images/dots.png"></i></button>
+                                                    <div class="dropdown-content">
+                                                        <a href="@Url.Action("Downloading", "User",new { id = item.downloads.NoteID})">Download Note</a>
+                                                        <a data-toggle="modal" data-target="#mymodel">
+                                                            Add
+                                                            Reviews/Feedback
+                                                        </a>
+                                                        <a  data-toggle="modal" data-target="#mymodel1">Report as an inappropriate</a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="modal fade" id="mymodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Add Review</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="container">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12 col-sm-12 col-12">
+                                                                            <div class="rate">
+
+                                                                                <input type="radio" id="star5" name="rate" value="5" />
+                                                                                <label for="star5" title="text">5 stars</label>
+                                                                                <input type="radio" id="star4" name="rate" value="4" />
+                                                                                <label for="star4" title="text">4 stars</label>
+                                                                                <input type="radio" id="star3" name="rate" value="3" />
+                                                                                <label for="star3" title="text">3 stars</label>
+                                                                                <input type="radio" id="star2" name="rate" value="2" />
+                                                                                <label for="star2" title="text">2 stars</label>
+                                                                                <input type="radio" id="star1" name="rate" value="1" />
+                                                                                <label for="star1" title="text">1 star</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12 col-sm-12 col-12">
+                                                                            <form>
+                                                                                <div class="form-group">
+                                                                                    <label for="exampleFormControlTextarea1">Comments</label>
+                                                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                                                </div>
+                                                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal fade" id="mymodel1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">@item.downloads.NoteTitle</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="container">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12 col-sm-12 col-12">
+                                                                            <form>
+                                                                                <div class="form-group">
+                                                                                    <label for="exampleFormControlTextarea1">Remarks*</label>
+                                                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                                                                </div>
+                                                                                <button type="submit" class="btn btn-primary">Report an issue</button>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+    </div>
+    <hr>
+    <footer>
+        <div class="content-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <p>
+                            Copyright &copy; Tatvasoft All rights Reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-12 social-list-div">
+                        <ul class="social-list">
+                            <li><a href="#"><img src="~/Content/Front/images/images/facebook.png"></a></li>
+                            <li><a href="#"><img src="~/Content/Front/images/images/twitter.png"></a></li>
+                            <li><a href="#"><img src="~/Content/Front/images/images/linkedin.png"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/Content/Front/js/jquery.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            var table = $('table').DataTable({
+                'sDom': '"top"i',
+                "iDisplayLength": 10,
+                "binfo": false,
+                language: {
+                    paginate: {
+                        next: '<img src="/Content/Front/images/images/right-arrow.png">',
+                        previous: '<img src="/Content/Front/images/images/left-arrow.png">'
+                    }
+                }
+            }
+            );
+            $('.btn-search').click(function () {
+                var x = $('#search').val();
+
+                table.search(x).draw();
+            });
+
+        });
+    </script>
+
+    <script src="~/Content/Front/js/bootstrap.min.js"></script>
+    <script src="~/Content/Front/js/script.js"></script>
+</body>
+</html>

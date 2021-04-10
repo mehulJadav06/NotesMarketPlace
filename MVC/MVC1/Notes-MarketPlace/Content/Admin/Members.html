@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes-MarketPlace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/Members/Members.css">
+    <link rel="stylesheet" href="css/Manage-Admins/responsive.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="images/user-profile/navbarbanner.png" alt="logo" class="img-responsive">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">&#9776;</span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dashboard
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown-1">
+                                <a class="dropdown-item" href="Notes-under-review.html">Notes Under Review</a>
+                                <a class="dropdown-item" href="Published-Notes.html">Published Notes</a>
+                                <a class="dropdown-item" href="Download-Notes.html">Downloaded Notes</a>
+                                <a class="dropdown-item" href="Rejected-Notes.html">Rejected Notes</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Notes-Detail.html">Notes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Members.html">Members</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Reports
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown-2">
+                                <a class="dropdown-item" href="spam-reports.html">Spam Reports</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Setting</a>
+                        </li>
+                        <li class="nav-item dropdown nav-item-img">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="images/Dashboard/user-img.png" alt="client" class="rounded-circle seller">
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="My-Profile.html">Update Profile</a>
+
+                                <a class="dropdown-item" href="forget-password.html">Change Password</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" style="color: #6255a5;">Logout</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <form class="form-inline" style="float: none;">
+
+                                <button class="btn btn-outline-success btn-navbar" type="submit">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+        <div class="container">
+        <div id="Members">
+
+            <div class="row">
+                <div class="col-md-5 col-sm-12 col-12">
+                    <div id="header">
+                        <h2>Members</h2>
+                    </div>
+                </div>
+                <div class="col-md-7 col-sm-12 col-12">
+                    <form class="form-inline">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 col-7">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                                        aria-label="Search" id="search">
+                                <img src="images/Dashboard/search.jpg" alt="search" class="search-icon">
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-5">
+                                <button class="btn btn-search " type="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">SR NO.</th>
+                            <th scope="col">FIRST NAME</th>
+                            <th scope="col">LAST NAME</th>
+                            <th scope="col">EMAIL</th>
+                            <th scope="col">JOINING DATE</th>
+                            <th scope="col">UNDER REVIEW NOTES</th>
+                            <th scope="col">PUBLISHED NOTES</th>
+                            <th scope="col">DOWNLOADED NOTES</th>
+
+                            <th scope="col">TOTAL EXPENSES</th>
+                            <th scope="col">TOTAL EARNINGS</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Khyati</td>
+                            <td>Patel</td>
+                            <td>khyatipatel@gmail.com</td>
+                            <td>9-10-2020, 10:10</td>
+                            <td>19</td>
+                            <td>10</td>
+                            <td>22</td>
+                            <td>$220</td>
+                            <td>$177</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="dropbtn"><img src="images/images/dots.png"></button>
+                                    <div class="dropdown-content">
+
+                                        <a href="#">View More Details</a>
+                                        <a href="#">Deactivate</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+
+
+                            <td>Rahul</td>
+                            <td> Shah</td>
+                            <td>rahulshah@gmail.com</td>
+                            <td>10-10-2020, 12:30</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>4</td>
+                            <td>$150</td>
+                            <td>$200</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="dropbtn"><img src="images/images/dots.png"></button>
+                                    <div class="dropdown-content">
+
+                                        <a href="#">View More Details</a>
+                                        <a href="#">Deactivate</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+
+                            <td>Suman</td>
+                            <td>Trivedi</td>
+                            <td>sumantrivedi@gmail.com</td>
+                            <td>11-10-2020, 1:00</td>
+                            <td>12</td>
+                            <td>11</td>
+                            <td>17</td>
+                            <td>$886</td>
+                            <td>978</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="dropbtn"><img src="images/images/dots.png"></button>
+                                    <div class="dropdown-content">
+
+                                        <a href="#">View More Details</a>
+                                        <a href="#">Deactivate</a>
+                                    </div>
+                                </div>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>Raj</td>
+                            <td>Malhotra</td>
+                            <td>rajmalhotra77@gmail.com</td>
+
+                            <td>12-10-2020, 10:10</td>
+                            <td>2</td>
+                            <td>123</td>
+                            <td>28</td>
+                            <td>$1284</td>
+                            <td>$15254</td>
+
+                            <td>
+                                <div class="dropdown">
+                                    <button class="dropbtn"><img src="images/images/dots.png"></button>
+                                    <div class="dropdown-content">
+                                        <a href="#">View More Details</a>
+                                        <a href="#">Deactivate</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+
+                            <td>Niya</td>
+                            <td>Patel</td>
+                            <td>niyapatel12@gmail.com</td>
+
+                            <td>13-10-2020, 10:10</td>
+                            <td>20</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>$0</td>
+                            <td>$69</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="dropbtn"><img src="images/images/dots.png"></button>
+                                    <div class="dropdown-content">
+
+                                        <a href="#">View More Details</a>
+                                        <a href="#">Deactivate</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <section id="pagination">
+                <nav aria-label="Page navigation example">
+
+                    <ul class="pagination">
+                        <li class="page-item arrow-left"><a class="page-link" href="#"> <img src="images/down-arrow.png"> </a></li>
+                        <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item arrow-right"><a class="page-link" href="#"> <img src="images/down-arrow.png"> </a></li>
+                    </ul>
+                </nav>
+            </section>
+        </div>
+    </div>
+<hr>
+
+    <footer>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-6 text-center">
+                version 1.1.24
+            </div>
+            <div class="col-md-6 col-sm-6 col-6 text-right">
+                <p>
+                    Copyright &copy; Tatvasoft All rights Reserved.
+                </p>
+            </div>
+        </div>
+
+    </footer>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/script.js"></script>
+
+
+
+</body></html>

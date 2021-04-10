@@ -1,0 +1,246 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+nav {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.navbar-nav {
+    padding-left: 200px;
+}
+
+ul.navbar-nav > li > a,
+ul.navbar > li > button {
+    font-family: "Open Sans", sans-serif;
+    color: #333333;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 1px;
+
+}
+
+
+.navbar-toggler-icon {
+    background: none;
+    color: #6255a5;
+    font-size: 35px;
+    margin-right: 5px;
+}
+
+.btn-navbar {
+    color: #6255a5;
+    background-color: #6255a5;
+    width: 89px;
+    height: 40px;
+    border-radius: 3px;
+    color: #fff;
+    font-family: "open Sans", sans-serif;
+    font-size: 13px;
+    margin-left: 30px;
+}
+
+.nav-item {
+    margin-top: 10px;
+}
+
+.nav-item-img {
+    margin-top: 0px;
+}
+
+.spacing {
+    margin-left: 2px;
+}
+
+.seller {
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+}
+
+#padding-navbar {
+    padding-top: 60px;
+}
+
+nav button:focus {
+    outline: none;
+}
+
+/*** header ****/
+
+
+hr{
+    margin-top:60px
+}
+
+#Members{
+    margin-top: 120px;
+
+}
+
+#header h2{
+    font-family: "open sans",sans-serif;
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin-bottom: 30px;
+}
+.form-inline {
+    float: right;
+}
+.search-icon{
+    float: left;
+    position: relative;
+    z-index: 2;
+    top:-34px;
+    left: 10px;
+}
+
+.btn-search{
+    background-color: #6255a5;
+    width:100%;
+    height: 50px;
+    border-radius: 3px;
+    color:#fff;
+    font-family: "open Sans", sans-serif;
+    font-size: 18px;
+    line-height: 22px;
+  }
+  
+#search{
+    width: 322px;   
+    max-width: 100%;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+    padding-left: 40px;  
+  }
+
+
+
+/**** Table ****/
+
+table{
+    margin:30px 0px;
+    border: 1px solid #d1d1d1;
+}
+  tr:hover{
+    -webkit-box-shadow: 0px 2px 4px #e06547;
+    -moz-box-shadow: 0px 2px 4px #e06547;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
+  }
+tr{
+  height:60px;
+}
+
+thead tr th{
+  color: #333333;
+  font-family: "open sans",sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px; 
+  
+}
+
+/***   Data table*/
+
+table.dataTable thead .sorting {
+    background: none !important;
+}
+/*
+table.dataTable thead .sorting_asc {
+    background: none !important;
+}
+
+*/
+
+table.dataTable thead th, table.dataTable thead td {
+    padding: 10px 18px;
+    border-bottom: none;
+}
+
+table.dataTable.no-footer {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background: none !important;
+    background-color: #6255a5 !important;
+    border-radius: 50% !important;
+    color: white !important;
+    font-family: "open sans",sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.dataTables_wrapper .dataTables_paginate {
+    display: table;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        background: none;
+        background-color: white;
+        color: #333 !important;
+        border-radius: 50%;
+        border: 1px solid white;
+        font-family: "open sans",sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        outline: none;
+    }
+
+.dataTables_wrapper .dataTables_info {
+    display: none;
+}
+
+a.dropdown-item{
+    font-family: "open sans",sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #333333;
+    padding-bottom: 10px;
+  }
+
+  .dropdown-menu{
+      padding: 10px;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right:-2px;
+    top:-100px;
+    width: 220px;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
+    .dropdown:hover .dropbtn {}
+  
+  .dropbtn{
+    border: none;
+    background: #fff;
+  }

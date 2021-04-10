@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes-MarketPlace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/signup/signup.css">
+    <link rel="stylesheet" href="css/login/responsive.css"><!-- both pages have same type of reponsive css -->
+
+</head>
+<body>
+      
+    <section id="signup">
+        <div class="content-box-lg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-12 text-center" id="top-logo">
+                        <img src="images/top-logo.png" alt="logo" class="img-resposive"> 
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div id="signup-box">
+                            <div id="heading" class="text-center">
+                                <h2>Creat an Account</h2>
+                                <p>Enter your Details to signup</p>
+                            </div>
+                            
+                            <div id="signed-up" class="text-center"><i class="fa fa-check-circle-o" aria-hidden="false"></i>Your account has been succefully created.</div>
+                            <form>
+                                <div class="col-md-12 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <label for="First-Name" id="firstname">First Name*</label>
+                                        <input type="text" id="First-Name" class="form-control"  placeholder="Enter your First Name" >
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <label for="Last-Name" id="lastname">Last Name*</label>
+                                        <input type="text" id="Last-Name" class="form-control"  placeholder="Enter your Last Name" >
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <label for="enter-email" id="email">Email*</label>
+                                        <input type="email" id="enter-email" class="form-control" placeholder="Enter your email address" >
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12 col-sm-12 col-12">
+                                    <div class="form-group ">
+                                        <label for="new-password" class="password">Password</label>            
+                                        <input type="password" id="new-password" class="form-control pwd" placeholder="Enter your  password">
+
+                                        <span toggle="#new-password" class="eye field-icon toggle-password"><img
+                                                src="images/eye.png" alt="eye"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-12" id="pwd">
+                                    <div class="form-group ">
+                                        <label for="conform-password" class="password">Conform Password</label>            
+                                        <input type="password" id="conform-password" class="form-control pwd" placeholder="RE-Enter your  password">
+
+                                        <span toggle="#conform-password" class="eye field-icon toggle-password"><img
+                                                src="images/eye.png" alt="eye"></span>
+                                    </div>
+                                </div>                               
+
+
+                                <div class="col-md-12 col-sm-12">
+                                     <button type="submit" class="btn btn-block btn-general">Sign-up</button>
+                                </div>
+                            </form>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div id="login-link">
+                                        <p class="text-center">Already Have an Account? <a href="#">Login</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </section>    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

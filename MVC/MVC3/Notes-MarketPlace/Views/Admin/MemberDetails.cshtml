@@ -1,0 +1,314 @@
+﻿@model Notes_MarketPlace.Models.Member
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes-MarketPlace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="~/Content/Admin/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/Admin/css/Member-Details/Member-Details.css">
+    <link rel="stylesheet" href="~/Content/Admin/css/Member-Details/responsive.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href='@Url.Action("Dashboard", "Admin")'>
+                    <img src="~/Content/Admin/images/user-profile/navbarbanner.png" alt="logo" class="img-responsive">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">&#9776;</span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("Dashboard", "Admin",new { })'>Dashboard</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Notes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown-1">
+                                <a class="dropdown-item" href='@Url.Action("NotesUnderReview", "Admin")'>Notes Under Review</a>
+                                <a class="dropdown-item" href='@Url.Action("PublishNotes", "Admin")'>Published Notes</a>
+                                <a class="dropdown-item" href='@Url.Action("DownloadNotes", "Admin")'>Downloaded Notes</a>
+                                <a class="dropdown-item" href='@Url.Action("RejectedNotes", "Admin")'>Rejected Notes</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("Members", "Admin")'>Members</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Reports
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown-2">
+                                <a class="dropdown-item" href='@Url.Action("SpamReports", "Admin")'>Spam Reports</a>
+                            </div>
+
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown-3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Setting
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown-3">
+                                @if ((bool)Session["SuperAdmin"])
+                                {
+                                    <a class="dropdown-item" href='@Url.Action("ManageAdmin", "Admin")'>Manage Administarator</a>
+                                }
+
+                                <a class="dropdown-item" href='@Url.Action("ManageCategory", "Admin")'>Manage Category</a>
+                                <a class="dropdown-item" href='@Url.Action("ManageType", "Admin")'>Manage Type</a>
+                                <a class="dropdown-item" href='@Url.Action("ManageCountry", "Admin")'>Manage Country</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown nav-item-img">
+                            @if (Session["Profile"] != null)
+                            {
+                                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src='~/UploadFiles/@Session["Profile"]' alt="client" class="rounded-circle seller">
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="~/Content/Admin/images/Dashboard/user-img.png" alt="client" class="rounded-circle seller">
+                                </a>
+                            }
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href='@Url.Action("MyProfile", "Admin")'>Update Profile</a>
+
+                                <a class="dropdown-item" href='@Url.Action("ChangePassword", "User")'>Change Password</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href='@Url.Action("LogOut", "User")' style="color: #6255a5;">Logout</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <form class="form-inline" style="float: none;">
+                                <a href='@Url.Action("LogOut", "User")'><button class="btn btn-outline-success btn-navbar" href='@Url.Action("LogOut", "User")' type="button">Logout</button></a>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div id="Members-Detail">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-12">
+                    <div id="header">
+                        <h2>Member Details</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-sm-12 col-12">
+                    <img src="~/Content/Admin/images/images/member.png">
+                </div>
+                <div class="col-lg-5 col-md-8 col-sm-12 col-12 detail">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-6 col-6">
+                            <h4 class="name">First Name:</h4>
+                        </div>
+                        <div class="col-md-7 col-sm-6 col-6">
+                            <h4 class="value">@Model.user.FirstName</h4>
+                        </div>
+                        <div class="col-md-5 col-sm-6 col-6">
+                            <h4 class="name">Last Name:</h4>
+                        </div>
+                        <div class="col-md-7 col-sm-6 col-6">
+                            <h4 class="value">@Model.user.LastName</h4>
+                        </div>
+                        <div class="col-md-5 col-sm-6 col-6">
+                            <h4 class="name">Email:</h4>
+                        </div>
+                        <div class="col-md-7 col-sm-6 col-6">
+                            <h4 class="value">@Model.user.EmailID</h4>
+                        </div>
+                        <div class="col-md-5 col-sm-6 col-6">
+                            <h4 class="name">D.O.B:</h4>
+                        </div>
+                        <div class="col-md-7 col-sm-6 col-6">
+                            <h4 class="value">@Model.userProfile.DateOfBirth</h4>
+                        </div>
+                        <div class="col-md-5 col-sm-6 col-6">
+                            <h4 class="name">Phone Number:</h4>
+                        </div>
+                        <div class="col-md-7 col-sm-6 col-6">
+                            <h4 class="value">@Model.userProfile.MobileNumber</h4>
+                        </div>
+                        <div class="col-md-5 col-sm-6 col-6">
+                            <h4 class="name">College/University:</h4>
+                        </div>
+                        <div class="col-md-7 col-sm-6 col-6">
+                            <h4 class="value">@Model.userProfile.University</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-12 col-sm-12 col-12 address">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-3 col-sm-6 col-6">
+                            <h4 class="name">Address-1:</h4>
+                        </div>
+                        <div class="col-lg-8 col-md-9 col-sm-6 col-6">
+                            <h4 class="value">@Model.userProfile.AddressLine1</h4>
+                        </div>
+                        <div class="col-lg-4 col-md-3 col-sm-6 col-6">
+                            <h4 class="name">Address-2:</h4>
+                        </div>
+                        <div class="col-lg-8 col-md-9 col-sm-6 col-6">
+                            <h4 class="value">@Model.userProfile.AdreessLine2</h4>
+                        </div>
+                        <div class="col-lg-4 col-md-3 col-sm-6 col-6">
+                            <h4 class="name">City:</h4>
+                        </div>
+                        <div class="col-lg-8 col-md-9 col-sm-6 col-6">
+                            <h4 class="value">@Model.userProfile.City</h4>
+                        </div>
+                        <div class="col-lg-4 col-md-3 col-sm-6 col-6">
+                            <h4 class="name">State:</h4>
+                        </div>
+                        <div class="col-lg-8 col-md-9 col-sm-6 col-6">
+                            <h4 class="value">@Model.userProfile.State</h4>
+                        </div>
+                        <div class="col-lg-4 col-md-3 col-sm-6 col-6">
+                            <h4 class="name">Country:</h4>
+                        </div>
+                        <div class="col-lg-8 col-md-9 col-sm-6 col-6">
+                            <h4 class="value">@Model.userProfile.Country</h4>
+                        </div>
+                        <div class="col-lg-4 col-md-3 col-sm-6 col-6">
+                            <h4 class="name">Zipcode:</h4>
+                        </div>
+                        <div class="col-lg-8 col-md-9 col-sm-6 col-6">
+                            <h4 class="value">@Model.userProfile.ZipCode</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="table-responsive">
+                <div class="table-header">
+                    <h2>Notes</h2>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">SR NO.</th>
+                            <th scope="col">NOTE TITLE</th>
+                            <th scope="col">CATEGORY</th>
+                            <th scope="col">STATUS</th>
+                            <th scope="col">DOWNLOADED NOTES</th>
+                            <th scope="col">TOTAL EARNINGS</th>
+                            <th scope="col">DATE ADDED</th>
+                            <th scope="col">PUBLISHED DATE</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var i = 0;
+                            foreach (var item in Model.member)
+                            {
+                                i += 1;
+                                string status = "";
+                                if (item.note.Status == 5)
+                                {
+                                    status = "Published";
+                                }
+                                if (item.note.Status == 4)
+                                {
+                                    status = "In Review";
+                                }
+                                if (item.note.Status == 6)
+                                {
+                                    status = "Rejected";
+                                }@* Complete it and verify it later*@
+                                <tr>
+                                    <th scope="row">@i</th>
+
+                                    <td>@item.note.Title</td>
+                                    <td>@item.category.Name</td>
+                                    <td>@status</td>
+                                    <td>@TempData[item.note.ID.ToString()]</td>
+                                    <td>$ @TempData[item.note.ID.ToString() + " earned"]</td>
+                                    <td>@item.note.CreatedDate</td>
+                                    <td>@item.note.PublishedDate</td>
+
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="dropbtn"><img src="~/Content/Admin/images/images/dots.png"></button>
+                                            <div class="dropdown-content">
+                                                <a href='@Url.Action("Downloading", "User", new { id = @item.note.ID })'>Download Notes</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-12 text-center">
+                version 1.1.24
+            </div>
+            <div class="col-md-6 col-sm-12 col-12 text-right">
+                <p>
+                    Copyright &copy; Tatvasoft All rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script src="~/Content/Admin/js/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            var table = $('table').DataTable({
+                'sDom': '"top"i',
+                "iDisplayLength": 10,
+                "binfo": false,
+                language: {
+                    paginate: {
+                        next: '<img src="/Content/Front/images/images/right-arrow.png">',
+                        previous: '<img src="/Content/Front/images/images/left-arrow.png">'
+                    }
+                }
+            }
+            );
+            $('.btn-search').click(function () {
+                var x = $('#search').val();
+
+                table.search(x).draw();
+            });
+
+        });
+    </script>
+    <script src="~/Content/Admin/js/bootstrap.min.js"></script>
+    <script src="~/Content/Admin/js/script.js"></script>
+</body>
+</html>

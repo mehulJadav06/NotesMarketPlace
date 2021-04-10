@@ -1,0 +1,157 @@
+﻿@model  Notes_MarketPlace.Models.SearchNotes
+
+<div id="books">
+@if (Model != null && Model.newGetSellerNotesDetails_Results != null && Model.newGetSellerNotesDetails_Results.Count() > 0)
+{
+    
+    double dblPageCount = (double)((decimal)Model.TotalRecords / decimal.Parse(Model.PageSize));
+    int pageCount = (int)Math.Ceiling(dblPageCount);
+    <div class="books">
+
+        @foreach (var note in Model.newGetSellerNotesDetails_Results)
+        {
+            <div class="card" onclick="window.location.href='@Url.Action("NotesDetails", "User", new { Id = note.ID })'">
+
+                <img src="~/Content/Front/images/Search/1.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">@note.Title</h5>
+                    <div class="card-text">
+                        @if (note.UniversityName != null)
+                        {
+                            <img src="../../Content/Front/images/images/university.png">
+                            <span>
+                                @note.UniversityName,
+                            </span><br>
+                        }
+                        @if (note.NumberOfPages != null)
+                        {
+                            <img src="../../Content/Front/images/images/pages.png"><span>@note.NumberOfPages Pages</span><br>
+                        }
+                        @if (note.PublishedDate != null)
+                        {
+                            <img src="../../Content/Front/images/images/calendar.png"><span>@note.PublishedDate</span><br>
+                        }
+                        @if (note.Report != null)
+                        {
+                            <img src="../../Content/Front/images/images/flag.png">
+                            <span class="flag">
+                                @note.Report users marked this note as
+                                inappropriate
+                            </span>
+                        }
+
+                        <div class="book-rating">
+                            @if (note.Rating != null)
+                            {
+                                for (int i = 0; i < (int)note.Rating; i++)
+                                {
+                                    <img src="../../Content/Front/images/images/star.png">
+                                }
+
+                                for (int i = (int)note.Rating; i < 5; i++)
+                                {
+                                    <img src="../../Content/Front/images/images/star-white.png">
+                                }
+                            }
+                            else
+                            {
+                                for (int i = 0; i < 5; i++)
+                                {
+                                    <img src="../../Content/Front/images/images/star-white.png">
+                                }
+                            }
+                            @if (note.Rating != null)
+                            {
+                                <span>@note.TotalRating Reviews</span>
+                            }
+                            else
+                            {
+                                <span> 0 Reviews </span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+        @*
+        <div class="jplist-panel footer">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <!-- pagination results -->
+                            <div class="jplist-label" data-type="Showing {start} to {end} of {all} entries" data-control-type="pagination-info" data-control-name="paging" data-control-action="paging">
+                                Showing @((Convert.ToInt32(Model.PageNumber) - 1) * Convert.ToInt32(Model.PageSize) + 1) to @(Convert.ToInt32(Model.PageNumber) * Convert.ToInt32(Model.PageSize) <= Model.TotalRecords ? Convert.ToInt32(Model.PageNumber) * Convert.ToInt32(Model.PageSize) : Model.TotalRecords) of @Model.TotalRecords entries
+                            </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="jplist-drop-down dataTables_length" data-control-type="items-per-page-drop-down" data-control-name="paging" data-control-action="paging">
+                            Show&nbsp;<select class="jplist-select" data-control-type="items-per-page-select" data-control-name="paging" data-control-action="paging">
+                                <option data-number="2" @(Model.PageSize == "2" ? "selected = \"selected\"" : "")>2</option>
+                                <option data-number="@Model.TotalRecords" @(Model.PageSize == Model.TotalRecords.ToString() ? "selected = \"selected\"" : "")>View All</option>
+                            </select>&nbsp;entries
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="text-align:center">
+                        <!-- pagination data-prev="<" data-next=">" data-first="<<" data-last=">>" -->
+                        <div class="jplist-pagination" data-control-type="pagination" data-control-name="paging" data-control-action="paging" data-range="5">
+                            @if (pageCount > 1 && Convert.ToInt32(Model.PageNumber) > 1)
+                            {
+                                <div class="jplist-pagingprev jplist-hidden" data-type="pagingprev">
+                                    @*<button type="button" class="jplist-first" data-number="0" data-type="first" title="" value="1">«</button>
+                                    <button type="button" class="jplist-prev" data-type="prev" title="" data-number="0" value="@(Convert.ToInt32(Model.PageNumber) - 1)">‹</button>
+                                </div>
+                            }
+                            <div class="jplist-pagingmid" data-type="pagingmid">
+                                <div class="jplist-pagesbox" data-type="pagesbox">
+                                    @if (pageCount > 1)
+                                    {
+                                        int startPage = 1, endPage = pageCount;
+                                        if (pageCount > 5)
+                                        {
+                                            if (Convert.ToInt32(Model.PageNumber) - 2 > 0)
+                                            {
+                                                startPage = Convert.ToInt32(Model.PageNumber) - 2;
+                                            }
+                                            if (Convert.ToInt32(Model.PageNumber) + 2 <= pageCount)
+                                            {
+                                                endPage = Convert.ToInt32(Model.PageNumber) + 2;
+                                            }
+                                        }
+                                        for (int iPage = startPage; iPage <= endPage; iPage++)
+                                        {
+                                            if (iPage != Convert.ToInt32(Model.PageNumber))
+                                            {
+                                                <button type="button" data-type="page" data-number="@iPage" title="" value="@iPage">@iPage</button>
+                                            }
+                                            else
+                                            {
+                                                <button type="button" data-type="page" class="jplist-current" data-active="true" data-number="@iPage" title="" value="@iPage">@iPage</button>
+                                            }
+                                        }
+                                    }
+                                </div>
+                            </div>
+                            @if (pageCount > 1 && Convert.ToInt32(Model.PageNumber) < pageCount)
+                            {
+                                <div class="jplist-pagingnext" data-type="pagingnext">
+                                    <button type="button" class="jplist-next" data-type="next" title="" data-number="@(Convert.ToInt32(Model.PageNumber) + 1)" value="@(Convert.ToInt32(Model.PageNumber) + 1)">›</button>
+                                    @*<button type="button" class="jplist-last" data-type="last" title="" data-number="@pageCount" value="@pageCount">»</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        *@
+    </div>
+}
+else
+{
+    <div id="PartialSearchNoteOuter">
+        No Records Found
+    </div>
+}
+</div>
+

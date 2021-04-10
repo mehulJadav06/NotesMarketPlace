@@ -1,0 +1,68 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EmailVerification</title>
+</head>
+<body>
+    @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status)) { 
+        <table class="table table-borderless" cellpadding="0" cellspacing="0">
+        <thead>
+            <tr>
+                <td scope="col"><img src="images/user-profile/navbarbanner.png"></td>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row" style="font-family: 'Open Sans',sans-serif;font-size: 26px;font-weight: 600;line-height: 40px;color: #6255a5;">
+                    Email Verification
+                </td>
+
+            </tr>
+            <tr>
+                <td scope="row" style="font-family: 'Open Sans',sans-serif;font-size: 18px;font-weight: 600;line-height: 22px;color: #333333;">
+                    Dear Smith
+                </td>
+
+            </tr>
+            <tr>
+                <td scope="row" style="font-family: 'Open Sans',sans-serif;font-size: 16px;font-weight: 400;line-height: 20px;color: #333333;">
+                    Thanks For Signing Up
+                </td>
+            </tr>
+            <tr>
+                <td scope="row" style="font-family: 'Open Sans',sans-serif;font-size: 16px;font-weight: 400;line-height: 20px;color: #333333;">
+                    Simply Click Below For Email Verification
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">
+                    <form>
+                        <button type="submit" class="btn btn-block " style="background-color: #6255a5;
+                                                                            color:#ffffff;
+                                                                            width: 540px;
+                                                                            height: 50px;
+                                                                            border-radius: 3px;
+                                                                            font-family:  'Open Sans',sans-serif;
+                                                                            font-size: 18px;
+                                                                            font-weight: 600;
+                                                                            line-height: 20px; ">
+                            Verify email address
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    }
+    
+    
+</body>
+</html>

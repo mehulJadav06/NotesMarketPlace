@@ -1,0 +1,310 @@
+﻿@model Notes_MarketPlace.Models.UserDetail
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes-MarketPlace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../Content/Front/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../Content/Front/css/user-profile/user-profile.css">
+    <link rel="stylesheet" href="../../Content/Front/css/user-profile/responsive.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="../../Content/Front/images/user-profile/navbarbanner.png" alt="logo" class="img-responsive">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">&#9776;</span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("SearchNotes", "User")'>Search<span class="spacing">Notes</span></a>
+                        </li>
+                        @if (Session["UserID"] == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("Login", "User")'>Sell<span class="spacing">Your</span><span class="spacing">Notes</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("Login", "User")'>Buyer<span class="spacing">Requests</span></a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("Dashboard", "User")'>Sell<span class="spacing">Your</span><span class="spacing">Notes</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("BuyerRequest", "User")'>Buyer<span class="spacing">Requests</span></a>
+                            </li>
+                        }
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("FAQ", "User")'>FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("ContactUs", "User")'>Contact<span class="spacing">Us</span></a>
+
+                        </li>
+                        <li class="nav-item">
+                            <img src="../../Content/Front/images/Dashboard/user-img.png" alt="client" class="rounded-circle seller">
+                        </li>
+
+                        <li class="nav-item">
+                            <form class="form-inline">
+
+                                <button class="btn btn-outline-success btn-navbar" type="submit">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section id="Title">
+        <div class="content-box-lg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div id="title" class="text-center">
+                            <h2>User Profile</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="Detail">
+        <div class="content-box-lg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        @using (Html.BeginForm("UserProfile", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <div id="Basic-profile">
+                                <div id="Basic" class="header">
+                                    <h2>Basic Profile Detail</h2>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.FirstName, "First Name*", new { @id = "firstname" })
+                                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @value = "@Model.FirstName", @readonly = "readonly" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.LastName, "Last Name*", new { @id = "lastname" })
+                                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @placeholder = "Enter your Last Name", @value = "@Model.LastName", @readonly = "readonly" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+
+                                            @Html.LabelFor(m => m.EmailID, "Email*", new { @id = "email" })
+                                            @Html.ValidationMessageFor(m => m.EmailID)
+                                            @if (Model.isAdmin)
+                                            {
+                                                @Html.TextBoxFor(m => m.EmailID, new { @class = "form-control", @placeholder = "Enter your Secondary Email address", type = "email" })
+                                            }
+                                            else
+                                            {
+                                                @Html.TextBoxFor(m => m.EmailID, new { @class = "form-control", @placeholder = "Enter your email address", type = "email", value = Model.EmailID, @readonly = "readonly" })
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+
+                                            @Html.LabelFor(m => m.DOB, "Date of Birth", new { @id = "date-of-birth" })
+                                            @Html.EditorFor(model => model.DOB, new { @class = "form-control", @placeholder = "Enter your Date of Birth" })
+                                            @Html.ValidationMessageFor(model => model.DOB)
+                                            <span class="shift-calender"><img src="../../Content/Front/images/calendar.png"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.Gender, "Gender", new { @id = "Gender-label" })
+                                            @Html.ValidationMessageFor(m => m.GenderList)
+                                            @Html.DropDownListFor(m => m.Gender, new SelectList(Model.GenderList, "ID", "Value"), "Select your Gender", new { @class = "form-control custom-select" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.MobileNo, "Phone no.")
+                                            <div class="row">
+                                                <div class="col-md-3 col-sm-3 col-3">
+                                                    <div id="country-code">
+                                                        @Html.ValidationMessageFor(m => m.Countries)
+                                                        @Html.DropDownListFor(m => m.CountryCode, new SelectList(Model.Countries, "ID", "CountryCode"), new { @class = "form-control custom-select" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9 col-sm-9 col-9">
+                                                    <div id="phone-no">
+                                                        @Html.ValidationMessageFor(m => m.MobileNo)
+                                                        @Html.TextBoxFor(m => m.MobileNo, new { @class = "form-control", @placeholder = "Enter your phone number " })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-12">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-12">
+                                                @Html.LabelFor(m => m.ProfilePicture, "Profile Picture")
+                                                @Html.ValidationMessageFor(m => m.ProfilePicture)
+                                            </div>
+                                            <div class="col-md-12 col-sm-12 col-12 text-center">
+                                                <div class="file-border">
+                                                    <label for="ProfilePicture" class="upload-profile">
+                                                        <img src="../../Content/Front/images/images/upload-file.png" />
+                                                        <p id="ProfilePictureFileName" style="color: lightgray;">Upload a Picture</p>
+                                                        @Html.TextBoxFor(m => m.ProfilePicture, new { type = "file", style = "display: none;" })
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Address-Details">
+                                <div id="address-Detail" class="header">
+                                    <h2>Address Details</h2>
+                                </div>
+                                <div id="address-details-form">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.AddressLine1, "Address Line 1*")
+                                                @Html.ValidationMessageFor(m => m.AddressLine1)
+                                                @Html.TextBoxFor(m => m.AddressLine1, new { @class = "form-control", @placeholder = "Enter your address" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.AddreessLine2, "Address Line 2*")
+                                                @Html.ValidationMessageFor(m => m.AddreessLine2)
+                                                @Html.TextBoxFor(m => m.AddreessLine2, new { @class = "form-control", @placeholder = "Enter your address" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.City, "City*")
+                                                @Html.ValidationMessageFor(m => m.City)
+                                                @Html.TextBoxFor(m => m.City, new { @class = "form-control", @placeholder = "Enter your city" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.State, "State*")
+                                                @Html.ValidationMessageFor(m => m.State)
+                                                @Html.TextBoxFor(m => m.State, new { @class = "form-control", @placeholder = "Enter your state" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.ZipCode, "ZipCode*")
+                                                @Html.ValidationMessageFor(m => m.ZipCode)
+                                                @Html.TextBoxFor(m => m.ZipCode, new { @class = "form-control", @placeholder = "Enter your zipcode" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.Country, "Country*" ,new { @id= "Country-label" })
+                                                @Html.ValidationMessageFor(m => m.Countries)
+                                                @Html.DropDownListFor(m => m.Country, new SelectList(Model.Countries, "Name", "Name"), new { @class = "form-control custom-select" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="University-Details">
+                                <div id="Basic" class="header">
+                                    <h2>University and College Information</h2>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.University, "University")
+                                            @Html.ValidationMessageFor(m => m.University)
+                                            @Html.TextBoxFor(m => m.University, new { @class = "form-control", @placeholder = "Enter your university" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.College, "College")
+                                            @Html.ValidationMessageFor(m => m.College)
+                                            @Html.TextBoxFor(m => m.College, new { @class = "form-control", @placeholder = "Enter your college" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <button type="submit" class="btn btn-user-profile">SUBMIT</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <footer>
+        <div class="content-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <p>
+                            Copyright &copy; Tatvasoft All rights Reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-12 social-list-div">
+                        <ul class="social-list">
+                            <li><a href="#"><img src="../../Content/Front/images/images/facebook.png"></a></li>
+                            <li><a href="#"><img src="../../Content/Front/images/images/twitter.png"></a></li>
+                            <li><a href="#"><img src="../../Content/Front/images/images/linkedin.png"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        //For Profile Picture
+        var input_img = document.getElementById('ProfilePicture');
+        var infoAreaimg = document.getElementById('ProfilePictureFileName');
+
+        if (input_img) {
+            input_img.addEventListener('change', showImgName);
+        }
+        function showImgName(event) {
+
+            var input_img = event.srcElement;
+
+            var fileName = input_img.files[0].name;
+
+            infoAreaimg.textContent = 'Picture name: ' + fileName;
+        }
+    </script>
+
+    <script src="../../Content/Front/js/jquery.min.js"></script>
+    <script src="../../Content/Front/js/bootstrap.min.js"></script>
+    <script src="../../Content/Front/js/script.js"></script>
+</body>
+</html>

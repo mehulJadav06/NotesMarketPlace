@@ -1,0 +1,151 @@
+@media(max-width:1199px) and (min-width:992px) {
+    nav .container{
+        margin-left: 0px;
+    }
+    .navbar{
+        padding-left: 0px;
+    }
+    .navbar-nav {
+        padding-left: 0px;
+    }
+    .seller {
+        margin-left: 2px;
+    }
+    ul.navbar-nav > li.active > a {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .navbar-brand {
+        width: fit-content;
+    }
+}
+
+
+@media(max-width:991px) and (min-width:768px) {
+    .navbar-nav {
+        padding-left: 0px;
+    }
+
+    .btn-navbar {
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+
+    .navbar {
+        display: block;
+    }
+
+    .navbar-nav {
+        padding-left: 0px;
+    }
+
+    .navbar-nav li {
+        margin: 5px 0px;
+    }
+
+    .seller {
+        margin-left: 0px;
+    }
+
+    .btn-navbar {
+        margin-left: 0px;
+    }
+    .nav-item img{
+        margin-left:0px;
+    }
+    .form-inline {
+        float: left;
+    }
+
+    #search {
+        width: 250px;
+    }
+
+    .heading {
+
+        margin-top: 15px;
+    }
+}
+
+
+@media(max-width:767px) {
+    .nav-item img{
+        margin-left:0px;
+    }
+    .form-inline {
+        float: left;
+    }
+
+    .navbar-nav {
+        padding-left: 0px;
+    }
+
+    .btn-navbar {
+
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+
+    footer p {
+        text-align: center;
+    }
+
+    footer .social-list {
+        text-align: center;
+    }
+
+    #search {
+        width: 200px;
+    }
+
+    .heading {
+
+        margin-top: 15px;
+    }
+
+    .arrow-left {
+        margin-right: 15px;
+    }
+
+    .arrow-right {
+        margin-left: 0px;
+    }
+
+    ul.pagination li:nth-child(3) a,
+    ul.pagination li:nth-child(4) a,
+    ul.pagination li:nth-child(5) a,
+    ul.pagination li:nth-child(6) a {
+        margin-left: 15px;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media(max-width:575px) {
+    .navbar-brand {
+        width: 75%;
+    }
+
+    .navbar-brand img {
+        width: 100%;
+    }
+
+    .navbar-toggler {
+        position: fixed;
+        right: 0px;
+        top: 0px;
+    }
+    #search {
+        width: 280px;
+    }
+
+}
+
+@media(max-width:394px) {
+    #search {
+        width: 180px;
+    }
+}

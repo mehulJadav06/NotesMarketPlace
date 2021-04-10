@@ -1,0 +1,121 @@
+@media(max-width:1199px) and (min-width:992px) {
+    .navbar-nav {
+        padding-left: 15px;
+    }
+
+    .navbar-brand {
+        width: fit-content;
+    }
+
+    .navbar-brand img {
+        width: 80%;
+    }
+
+    .seller {
+        margin-left: 10px;
+    }
+
+    .btn-navbar {
+        margin-left: 15px;
+    }
+
+    ul.navbar-nav > li > a {
+        font-family: "Open Sans", sans-serif;
+        color: #333333;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18px;
+        letter-spacing: 1px;
+
+    }
+    .name,
+    .value{
+        font-size: 16px;
+    }
+}
+
+@media (max-width:991px) {
+    .navbar-nav {
+        padding-left: 0;
+    }
+
+    .btn-navbar {
+        margin-left: 0px;
+    }
+
+    .seller {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    .form-inline {
+        float: left;
+    }
+
+
+    .address {
+        margin-left: 34%;
+        margin-top: 20px;
+        margin-right: 20%;
+    }
+
+}
+
+@media (min-width:768px) and (max-width:991px) {
+    .address .value {
+        padding-left: 17px;
+    }
+}
+
+@media (max-width:767px) {
+    .navbar-nav {
+        padding-left: 0;
+    }
+
+    .btn-navbar {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    .form-inline {
+        float: left;
+    }
+
+    footer .row > div {
+        text-align: center !important;
+    }
+
+    .seller {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    .address {
+        margin-left: 0px;
+        margin-top: 20px;
+    }
+
+    .detail {
+        margin-top: 20px;
+    }
+}
+@media(max-width:575px) {
+    .navbar-brand {
+        width: 75%;
+    }
+
+    .navbar-brand img {
+        width: 100%;
+    }
+
+    .form-inline {
+        float: left;
+    }
+
+    .navbar-toggler {
+        position: fixed;
+        right: 0px;
+        top: 0px;
+    }
+
+}

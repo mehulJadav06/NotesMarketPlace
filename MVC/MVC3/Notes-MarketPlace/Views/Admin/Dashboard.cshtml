@@ -1,0 +1,278 @@
+﻿@model IEnumerable<Notes_MarketPlace.Models.PublishedNotes>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes-MarketPlace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="~/Content/Admin/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/Admin/css/Dashboard/Dashboard.css">
+    <link rel="stylesheet" href="~/Content/Admin/css/Dashboard/responsive.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href='@Url.Action("Dashboard", "Admin")'>
+                    <img src="~/Content/Admin/images/user-profile/navbarbanner.png" alt="logo" class="img-responsive">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">&#9776;</span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("Dashboard", "Admin",new { })'>Dashboard</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Notes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown-1">
+                                <a class="dropdown-item" href='@Url.Action("NotesUnderReview", "Admin")'>Notes Under Review</a>
+                                <a class="dropdown-item" href='@Url.Action("PublishNotes", "Admin")'>Published Notes</a>
+                                <a class="dropdown-item" href='@Url.Action("DownloadNotes", "Admin")'>Downloaded Notes</a>
+                                <a class="dropdown-item" href='@Url.Action("RejectedNotes", "Admin")'>Rejected Notes</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("Members", "Admin")'>Members</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Reports
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown-2">
+                                <a class="dropdown-item" href='@Url.Action("SpamReports", "Admin")'>Spam Reports</a>
+                            </div>
+
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown-3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Setting
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown-3">
+                                @if ((bool)Session["SuperAdmin"])
+                                {
+                                    <a class="dropdown-item" href='@Url.Action("ManageAdmin", "Admin")'>Manage Administarator</a>
+                                }
+
+                                <a class="dropdown-item" href='@Url.Action("ManageCategory", "Admin")'>Manage Category</a>
+                                <a class="dropdown-item" href='@Url.Action("ManageType", "Admin")'>Manage Type</a>
+                                <a class="dropdown-item" href='@Url.Action("ManageCountry", "Admin")'>Manage Country</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown nav-item-img">
+                            @if (Session["Profile"] != null)
+                            {
+                                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src='~/UploadFiles/@Session["Profile"]' alt="client" class="rounded-circle seller">
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="~/Content/Admin/images/Dashboard/user-img.png" alt="client" class="rounded-circle seller">
+                                </a>
+                            }
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href='@Url.Action("MyProfile", "Admin")'>Update Profile</a>
+
+                                <a class="dropdown-item" href='@Url.Action("ChangePassword", "User")'>Change Password</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href='@Url.Action("LogOut", "User")' style="color: #6255a5;">Logout</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <form class="form-inline" style="float: none;">
+                                <a href='@Url.Action("LogOut", "User")'><button class="btn btn-outline-success btn-navbar" href='@Url.Action("LogOut", "User")' type="button">Logout</button></a>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div id="Dashboard">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-12">
+                    <div id="header">
+                        <h2>Dashboard</h2>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-12">
+                    <div class="box-container">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="box text-center">
+                                    <h2>@TempData["InReview"]</h2>
+                                    <p>Number Of notes in review for Publish</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="box text-center">
+                                    <h2>@TempData["NoOfNotesDownloadedin7days"]</h2>
+                                    <p>Number Of new notes downloaded (last seven days)</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="box text-center">
+                                    <h2>@TempData["NoOfNewRegistration"]</h2>
+                                    <p>Number Of new Registration (last seven days)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12 col-12">
+                    <div id="table-header">
+                        <h2>Published Notes</h2>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-12 col-sm-12 col-12">
+                    <form class="form-inline">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-12">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
+                                <img src="~/Content/Admin/images/Dashboard/search.jpg" alt="search" class="search-icon">
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-6">
+                                <button class="btn btn-search" type="button">Search</button>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-6">
+                                <select class="month custom-select">
+                                    <option>Select month</option>
+                                    <option>January</option>
+                                    <option>February</option>
+                                    <option>March</option>
+                                    <option>@TempData["3"]</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th scope="col">SR NO.</th>
+                        <th scope="col">TITLE</th>
+                        <th scope="col">CATEGORY</th>
+                        <th scope="col">ATACHMENT SIZE</th>
+
+                        <th scope="col">SELL TYPE</th>
+                        <th scope="col">PRICE</th>
+
+                        <th scope="col">PUBLISHER</th>
+                        <th scope="col">PUBLISHED DATE</th>
+                        <th scope="col">NUMBER OF DOWNLOADS</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var i = 0;
+                        foreach (var item in Model)
+                        {
+                            i += 1;
+                            <tr>
+                                <th scope="row">@i</th>
+                                <td>@item.note.Title</td>
+                                <td>@item.category.Name</td>
+                                <td>@TempData[item.note.ID + "mb"]</td>
+                                @if (item.note.IsPaid)
+                                {
+                                    <td>Paid</td>
+                                    <td>$ @item.note.SellingPrice</td>
+                                }
+                                else
+                                {
+                                    <td>Free</td>
+                                    <td>$0</td>
+                                }
+
+                                <td>@item.seller.FirstName @item.seller.LastName</td>
+                                <td>@item.note.PublishedDate</td>
+                                <td>@TempData[item.note.ID.ToString()]</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="dropbtn"><img src="~/Content/Admin/images/images/dots.png"></button>
+                                        <div class="dropdown-content">
+                                            <a href='@Url.Action("Downloading", "User", new { id = @item.note.ID })'>Download Note</a>
+                                            <a href='@Url.Action("NotesDetails", "User", new { id = @item.note.ID })'>View More Details</a>
+                                            <a href='@Url.Action("UnPublish", "Admin", new { id = @item.note.ID })'>Unpublish</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <hr>
+    <footer>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-12 text-center">
+                version 1.1.24
+            </div>
+            <div class="col-md-6 col-sm-12 col-12 text-right">
+                <p>
+                    Copyright &copy; Tatvasoft All rights Reserved.
+                </p>
+            </div>
+        </div>
+
+    </footer>
+    <script src="~/Content/Admin/js/jquery.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            var table = $('table').DataTable({
+                'sDom': '"top"i',
+                "iDisplayLength": 10,
+                "binfo": false,
+                language: {
+                    paginate: {
+                        next: '<img src="/Content/Front/images/images/right-arrow.png">',
+                        previous: '<img src="/Content/Front/images/images/left-arrow.png">'
+                    }
+                }
+            }
+            );
+            $('.btn-search').click(function () {
+                var x = $('#search').val();
+
+                table.search(x).draw();
+            });
+
+        });
+    </script>
+
+    <script src="~/Content/Admin/js/bootstrap.min.js"></script>
+    <script src="~/Content/Admin/js/script.js"></script>
+
+
+
+</body>
+</html>

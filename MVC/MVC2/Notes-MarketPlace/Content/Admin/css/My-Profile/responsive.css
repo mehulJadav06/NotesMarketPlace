@@ -1,0 +1,118 @@
+@media (min-width:992px) and (max-width:1199px) {
+    .navbar-nav {
+        padding-left: 15px;
+    }
+
+    .navbar-brand {
+        width: fit-content;
+    }
+
+    .navbar-brand img {
+        width: 80%;
+    }
+
+    .seller {
+        margin-left: 10px;
+    }
+
+    .btn-navbar {
+        margin-left: 15px;
+    }
+
+    ul.navbar-nav > li > a {
+        font-family: "Open Sans", sans-serif;
+        color: #333333;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18px;
+        letter-spacing: 1px;
+
+    }
+
+}
+
+@media (max-width:991px) {
+    
+    .navbar-nav {
+        padding-left: 0;
+    }
+
+    .btn-navbar {
+        margin-left: 0px;
+    }
+
+    .seller {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    .form-inline {
+        float: left;
+    }
+}
+
+@media (max-width:767px) {
+    .navbar-nav {
+        padding-left: 0;
+    }
+
+    .btn-navbar {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    .form-inline {
+        float: left;
+    }
+
+    footer .row > div {
+        text-align: center !important;
+    }
+
+    .seller {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+
+    input[type="text"],
+    input[type='email'] {
+        width: 105%;
+    }
+
+    #phone-no {
+        width: 104%;
+    }
+
+}
+@media(max-width:575px) {
+    .navbar-brand {
+        width: 75%;
+    }
+
+    .navbar-brand img {
+        width: 100%;
+    }
+
+    .form-inline {
+        float: left;
+    }
+
+    .navbar-toggler {
+        position: fixed;
+        right: 0px;
+        top: 0px;
+    }
+
+}
+@media (max-width:480px) {
+
+    input[type="text"],
+    input[type='email'] {
+        width: 105%;
+    }
+
+    #phone-no {
+        width: 104%;
+    }
+}

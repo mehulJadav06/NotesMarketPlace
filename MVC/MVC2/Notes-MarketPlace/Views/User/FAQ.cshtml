@@ -1,0 +1,307 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes-MarketPlace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../Content/Front/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../Content/Front/css/FAQ/FAQ.css">
+    <link rel="stylesheet" href="../../Content/Front/css/FAQ/responsive.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="../../Content/Front/images/user-profile/navbarbanner.png" alt="logo" class="img-responsive">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">&#9776;</span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("SearchNotes", "User")'>Search<span class="spacing">Notes</span></a>
+                        </li>
+                        @if (Session["UserID"] == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("Login", "User")'>Sell<span class="spacing">Your</span><span class="spacing">Notes</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("Login", "User")'>Buyer<span class="spacing">Requests</span></a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("Dashboard", "User")'>Sell<span class="spacing">Your</span><span class="spacing">Notes</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href='@Url.Action("BuyerRequest", "User")'>Buyer<span class="spacing">Requests</span></a>
+                            </li>
+                        }
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("FAQ", "User")'>FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("ContactUs", "User")'>Contact<span class="spacing">Us</span></a>
+
+                        </li>
+                        <li class="nav-item">
+                            <img src="../../Content/Front/images/Dashboard/user-img.png" alt="client" class="rounded-circle seller">
+                        </li>
+
+                        <li class="nav-item">
+                            <form class="form-inline">
+
+                                <button class="btn btn-outline-success btn-navbar" type="submit">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+    </header>
+
+
+
+
+    <section id="Title">
+        <div class="content-box-lg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div id="title" class="text-center">
+                            <h2>Frequently Asked Questions</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="General-Questions">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-12">
+                    <div class="header">
+                        <h2>General Questions</h2>
+                    </div>
+
+                    <div class="accordion" id="accordionExample">
+                        <div class="question">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h2 class="mb-0">
+                                        what is Market-Place-Notes ?
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="float: right;">
+                                            <img src="../../Content/Front/images/FAQ/add.png">
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                        brunch.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question">
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h2 class="mb-0">
+                                        What do the University say?
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="float: right;">
+                                            <img src="../../Content/Front/images/FAQ/add.png">
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                                        sunt aliqua put a bird on it squid single-origin coffee
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question">
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h2 class="mb-0">
+                                        Is this legal
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="float: right;">
+                                            <img src="../../Content/Front/images/FAQ/add.png">
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        Ofcouse It is.Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                                        sunt aliqua put a bird on it squid
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section id="Uploaders">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-12">
+                    <div class="header">
+                        <h2>Uploaders</h2>
+                    </div>
+                    <div class="upload-questions">
+                        <div class="accordion" id="accordionExample-2">
+                            <div class="question">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h2 class="mb-0">
+                                            What can't i sell?
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour" style="float: right;">
+                                                <img src="../../Content/Front/images/FAQ/add.png">
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div id="collapseFour" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample-2">
+                                        <div class="card-body">
+                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                            richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                            brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                                            sunt
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="question">
+                                <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                        <h2 class="mb-0">
+                                            What notes i can sell?
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" style="float: right;">
+                                                <img src="../../Content/Front/images/FAQ/add.png">
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample-2">
+                                        <div class="card-body">
+                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                            richardson ad squid.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Downloaders">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-12">
+                    <div class="header">
+                        <h2>Downloaders</h2>
+                    </div>
+                    <div class="download-questions">
+                        <div class="accordion" id="accordionExample-1">
+                            <div class="question">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h2 class="mb-0">
+                                            <span class="question-header">How do I buy notes ?</span>
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsesix" aria-expanded="true" aria-controls="collapsesix" style="float: right;">
+                                                <img src="../../Content/Front/images/FAQ/add.png">
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div id="collapsesix" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample-1">
+                                        <div class="card-body">
+                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                            richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                            brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                                            sunt
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="question">
+                                <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                        <h2 class="mb-0">
+                                            Can I edit notes ?
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseseven" aria-expanded="false" aria-controls="collapseseven" style="float: right;">
+                                                <img src="../../Content/Front/images/FAQ/add.png">
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseseven" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample-1">
+                                        <div class="card-body">
+                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                            richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                            brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                                            sunt aliqua
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <hr>
+    <footer>
+        <div class="content-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <p>
+                            Copyright &copy; Tatvasoft All rights Reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-12 social-list-div">
+                        <ul class="social-list">
+                            <li><a href="#"><img src="../../Content/Front/images/images/facebook.png"></a></li>
+                            <li><a href="#"><img src="../../Content/Front/images/images/twitter.png"></a></li>
+                            <li><a href="#"><img src="../../Content/Front//images/linkedin.png"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../Content/Front/js/jquery.min.js"></script>
+    <script src="../../Content/Front/js/bootstrap.min.js"></script>
+    <script src="../../Content/Front/js/script.js"></script>
+</body>
+</html>

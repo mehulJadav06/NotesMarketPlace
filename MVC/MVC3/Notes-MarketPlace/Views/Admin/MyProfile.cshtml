@@ -1,0 +1,263 @@
+﻿@model Notes_MarketPlace.Models.MyProfile
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes MarketPlace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/Admin/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/Admin/css/My-Profile/My-Profile.css">
+    <link rel="stylesheet" href="~/Content/Admin/css/My-Profile/responsive.css">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href='@Url.Action("Dashboard", "Admin")'>
+                    <img src="~/Content/Admin/images/user-profile/navbarbanner.png" alt="logo" class="img-responsive">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">&#9776;</span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("Dashboard", "Admin",new { })'>Dashboard</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Notes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown-1">
+                                <a class="dropdown-item" href='@Url.Action("NotesUnderReview", "Admin")'>Notes Under Review</a>
+                                <a class="dropdown-item" href='@Url.Action("PublishNotes", "Admin")'>Published Notes</a>
+                                <a class="dropdown-item" href='@Url.Action("DownloadNotes", "Admin")'>Downloaded Notes</a>
+                                <a class="dropdown-item" href='@Url.Action("RejectedNotes", "Admin")'>Rejected Notes</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("Members", "Admin")'>Members</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Reports
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown-2">
+                                <a class="dropdown-item" href='@Url.Action("SpamReports", "Admin")'>Spam Reports</a>
+                            </div>
+
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown-3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Setting
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown-3">
+                                @if ((bool)Session["SuperAdmin"])
+                                {
+                                    <a class="dropdown-item" href='@Url.Action("ManageAdmin", "Admin")'>Manage Administarator</a>
+                                }
+
+                                <a class="dropdown-item" href='@Url.Action("ManageCategory", "Admin")'>Manage Category</a>
+                                <a class="dropdown-item" href='@Url.Action("ManageType", "Admin")'>Manage Type</a>
+                                <a class="dropdown-item" href='@Url.Action("ManageCountry", "Admin")'>Manage Country</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown nav-item-img">
+                            @if (Session["Profile"] != null)
+                            {
+                                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src='~/UploadFiles/@Session["Profile"]' alt="client" class="rounded-circle seller">
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="~/Content/Admin/images/Dashboard/user-img.png" alt="client" class="rounded-circle seller">
+                                </a>
+                            }
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href='@Url.Action("MyProfile", "Admin")'>Update Profile</a>
+
+                                <a class="dropdown-item" href='@Url.Action("ChangePassword", "User")'>Change Password</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href='@Url.Action("LogOut", "User")' style="color: #6255a5;">Logout</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <form class="form-inline" style="float: none;">
+                                <a href='@Url.Action("LogOut", "User")'><button class="btn btn-outline-success btn-navbar" href='@Url.Action("LogOut", "User")' type="button">Logout</button></a>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div id="My-Profile">
+            <div id="my-profile">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div id="header">
+                            <h2>My Profile</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="Form">
+                @using (Html.BeginForm("MyProfilePost", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="row">
+
+                        <div class="col-md-12 col-sm-12 col-12">
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.FirstName, "First Name*", new { @id = "firstname" })
+                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @value = "@Model.FirstName" })
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-12">
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.LastName, "Last Name*", new { @id = "lastname" })
+                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @placeholder = "Enter your Last Name", @value = "@Model.LastName" })
+                            </div>
+
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-12">
+
+                            <div class="form-group">
+
+                                @Html.LabelFor(m => m.EmailID, "Email*", new { @id = "email" })
+                                @Html.ValidationMessageFor(m => m.EmailID)
+                                @Html.TextBoxFor(m => m.EmailID, new { @class = "form-control", type = "email", value = "@Model.EmailID" })
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-12 col-sm-12 col-12">
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.EmailID2, "Secondary Email", new { @id = "email" })
+                                @Html.ValidationMessageFor(m => m.EmailID2)
+                                @if (Model.EmailID2 == null)
+                                {
+                                    @Html.TextBoxFor(m => m.EmailID2, new { @class = "form-control", @placeholder = "Enter your secondary email address", type = "email" })
+                                }
+                                else
+                                {
+                                    @Html.TextBoxFor(m => m.EmailID2, new { @class = "form-control", type = "email", value = "@Model.EmailID2" })
+                                }
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-12 col-sm-12 col-12">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-12">
+                                    <label for="phone-no">Phone no.*</label>
+                                </div>
+
+                                <div class="col-md-2 col-sm-3 col-3">
+                                    <div class="form-group">
+                                        @Html.ValidationMessageFor(m => m.CountryCode)
+                                        @Html.DropDownListFor(m => m.CountryCode, new SelectList(Model.Countries, "ID", "CountryCode"), new { @id = "exampleFormControlSelect1", @class = "form-control custom-select" })
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-9 col-9 padding-right">
+
+                                    <div class="form-group">
+                                        @Html.ValidationMessageFor(m => m.MobileNo)
+                                        @Html.TextBoxFor(m => m.MobileNo, new { @class = "form-control", @id = "phone-no", @placeholder = "Enter your phone number " })
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-sm-12 col-12">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-12">
+
+                                    @Html.LabelFor(m => m.ProfilePicture, "Profile Picture")
+                                    @Html.ValidationMessageFor(m => m.ProfilePicture)
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-12 text-center add-border">
+                                    <label for="ProfilePicture" class="upload-profile">
+                                        <img src="~/Content/Admin/images/images/upload-file.png">
+                                        <p id="ProfilePictureFileName" textContent="Picture name: @Model.ProfilePicture" style="color: lightgray;">Upload a Picture</p>
+                                        @Html.TextBoxFor(m => m.ProfilePicture, new { type = "file", style = "display: none;" })
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-12">
+                            <button type="submit" class="btn-submit">Submit</button>
+
+                        </div>
+
+
+
+                    </div>
+                }
+            </div>
+        </div>
+
+
+        <hr>
+
+        <footer>
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-12 text-center">
+                    version 1.1.24
+                </div>
+                <div class="col-md-6 col-sm-12 col-12 text-right">
+                    <p>
+                        Copyright &copy; Tatvasoft All rights Reserved.
+                    </p>
+                </div>
+            </div>
+
+        </footer>
+        <script>
+            //For Profile Picture
+            var input_img = document.getElementById('ProfilePicture');
+            var infoAreaimg = document.getElementById('ProfilePictureFileName');
+
+            if (input_img) {
+                input_img.addEventListener('change', showImgName);
+            }
+            function showImgName(event) {
+
+                var input_img = event.srcElement;
+
+                var fileName = input_img.files[0].name;
+
+                infoAreaimg.textContent = 'Picture name: ' + fileName;
+            }
+        </script>
+        <script src="~/Content/Admin/js/jquery.min.js"></script>
+        <script src="~/Content/Admin/js/bootstrap.min.js"></script>
+
+        <script src="~/Content/Admin/js/script.js"></script>
+
+
+</body>
+
+</html>

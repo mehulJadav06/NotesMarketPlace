@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes-Marketplace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/My-SoldNotes/My-SoldNotes.css">
+    <link rel="stylesheet" href="css/My-SoldNotes/responsive.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="images/user-profile/navbarbanner.png" alt="logo" class="img-responsive">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">&#9776;</span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="Search-Notes.html">Search<span class="spacing">Notes</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="My-Soldnotes.html">Sell<span class="spacing">Your</span><span
+                                    class="spacing">Notes</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Buyer-Requests.html">Buyer<span class="spacing">Requests</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="FAQ.html">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Contact-us.html">Contact<span class="spacing">Us</span></a>
+
+                        </li>
+                        <li class="nav-item">
+                            <img src="images/Dashboard/user-img.png" alt="client" class="rounded-circle seller">
+                        </li>
+
+                        <li class="nav-item">
+                            <form class="form-inline">
+
+                                <button class="btn btn-outline-success btn-navbar" type="submit">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+    </header>
+
+    <div class="container">
+        <section id="My-soldnotes">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-6">
+                    <div class="heading">
+                        <h2>My Sold Notes</h2>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-12">
+                    <form class="form-inline">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 col-7">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                                        aria-label="Search" id="search">
+                                <img src="images/Dashboard/search.jpg" alt="search" class="search-icon">
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-5">
+                                <button class="btn btn-search " type="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section class="SoldNote-Table table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">SR NO.</th>
+                        <th scope="col">NOTE TITLE</th>
+                        <th scope="col">CATEGORY</th>
+                        <th scope="col">BUYER</th>
+                        <th scope="col">SELL TYPE</th>
+                        <th scope="col">PRICE</th>
+                        <th scope="col">DOWNLOAD DATE/TIME</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>testing123@gmail.com</td>
+                        <td>Paid</td>
+                        <td>$250</td>
+                        <td>27 Nov 2020, 11:24:34</td>
+                        <td><i><img src="images/eye.png"></i></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="dropbtn"><i><img src="images/images/dots.png"></i></button>
+                                <div class="dropdown-content">
+                                    <a href="#">Download Note</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Accounts</td>
+                        <td>Commerce</td>
+                        <td>testing123@gmail.com</td>
+                        <td>Free</td>
+                        <td>$0</td>
+                        <td>27 Nov 2020, 11:24:34</td>
+                        <td><i><img src="images/eye.png"></i></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="dropbtn"><i><img src="images/images/dots.png"></i></button>
+                                <div class="dropdown-content">
+                                    <a href="#">Download Note</a>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Social Studies</td>
+                        <td>Social</td>
+                        <td>testing123@gmail.com</td>
+                        <td>Free</td>
+                        <td>$0</td>
+                        <td>27 Nov 2020, 11:24:34</td>
+                        <td><i><img src="images/eye.png"></i></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="dropbtn"><i><img src="images/images/dots.png"></i></button>
+                                <div class="dropdown-content">
+                                    <a href="#">Download Note</a>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>AI</td>
+                        <td>IT</td>
+                        <td>testing123@gmail.com</td>
+                        <td>Paid</td>
+                        <td>$555</td>
+                        <td>27 Nov 2020, 11:24:34</td>
+                        <td><i><img src="images/eye.png"></i></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="dropbtn"><i><img src="images/images/dots.png"></i></button>
+                                <div class="dropdown-content">
+                                    <a href="#">Download Note</a>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>lorem ipsum</td>
+                        <td>lorem</td>
+                        <td>testing123@gmail.com</td>
+                        <td>Free</td>
+                        <td>$0</td>
+                        <td>27 Nov 2020, 11:24:34</td>
+                        <td><i><img src="images/eye.png"></i></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="dropbtn"><i><img src="images/images/dots.png"></i></button>
+                                <div class="dropdown-content">
+                                    <a href="#">Download Note</a>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>testing123@gmail.com</td>
+                        <td>Free</td>
+                        <td>$0</td>
+                        <td>27 Nov 2020, 11:24:34</td>
+                        <td><i><img src="images/eye.png"></i></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="dropbtn"><i><img src="images/images/dots.png"></i></button>
+                                <div class="dropdown-content">
+                                    <a href="#">Download Note</a>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">7</th>
+                        <td>Accunts</td>
+                        <td>Commerce</td>
+                        <td>testing123@gmail.com</td>
+                        <td>Paid</td>
+                        <td>$217</td>
+                        <td>27 Nov 2020, 11:24:34</td>
+                        <td><i><img src="images/eye.png"></i></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="dropbtn"><i><img src="images/images/dots.png"></i></button>
+                                <div class="dropdown-content">
+                                    <a href="#">Download Note</a>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">8</th>
+                        <td>Social Studies</td>
+                        <td>Social</td>
+                        <td>testing123@gmail.com</td>
+                        <td>Free</td>
+                        <td>$0</td>
+                        <td>27 Nov 2020, 11:24:34</td>
+                        <td><i><img src="images/eye.png"></i></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="dropbtn"><i><img src="images/images/dots.png"></i></button>
+                                <div class="dropdown-content">
+                                    <a href="#">Download Note</a>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">9</th>
+                        <td>AI</td>
+                        <td>IT</td>
+                        <td>testing123@gmail.com</td>
+                        <td>Paid</td>
+                        <td>$555</td>
+                        <td>27 Nov 2020, 11:24:34</td>
+                        <td><i><img src="images/eye.png"></i></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="dropbtn"><i><img src="images/images/dots.png"></i></button>
+                                <div class="dropdown-content">
+                                    <a href="#">Download Note</a>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">10</th>
+                        <td>Lorem ipsum</td>
+                        <td>lorem</td>
+                        <td>testing123@gmail.com</td>
+                        <td>Paid</td>
+                        <td>$155</td>
+                        <td>27 Nov 2020, 11:24:34</td>
+                        <td><i><img src="images/eye.png"></i></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="dropbtn"><i><img src="images/images/dots.png"></i></button>
+                                <div class="dropdown-content">
+                                    <a href="#">Download Note</a>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div id="pagination">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#"><img src="images/images/left-arrow.png" class="arrow-left"></a></li>
+                        <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item"><a class="page-link" href="#"><img src="images/images/right-arrow.png" class="arrow-right"></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+    </div>
+    <hr>
+    <footer>
+        <div class="content-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <p>
+                            Copyright &copy; Tatvasoft All rights Reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-12 social-list-div">
+                        <ul class="social-list">
+                            <li><a href="#"><img src="images/images/facebook.png"></a></li>
+                            <li><a href="#"><img src="images/images/twitter.png"></a></li>
+                            <li><a href="#"><img src="images/images/linkedin.png"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/script.js"></script>
+</body></html>

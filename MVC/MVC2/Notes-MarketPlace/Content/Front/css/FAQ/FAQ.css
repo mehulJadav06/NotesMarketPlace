@@ -1,0 +1,236 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+/** Navbar(Header) **/
+nav {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.navbar-nav {
+    padding-left: 284px;
+}
+
+
+ul.navbar-nav > li > a,
+ul.navbar > li > button {
+    font-family: "Open Sans", sans-serif;
+    color: #333333;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 1px;
+
+}
+
+li.active a {
+    color: #6255a5 !important;
+    border-bottom: 3px solid #6255a5;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.btn-navbar {
+    color: #6255a5;
+    background-color: #6255a5;
+    width: 89px;
+    height: 40px;
+    border-radius: 3px;
+    color: #fff;
+    font-family: "open Sans", sans-serif;
+    font-size: 13px;
+    margin-left: 20px;
+
+}
+.nav-item img{
+    margin-left:10px;
+}
+
+.spacing {
+    margin-left: 2px;
+}
+/**** header ****/
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+nav{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.navbar-nav{
+    padding-left: 100px;
+}
+ 
+
+ul.navbar-nav > li > a ,
+ul.navbar > li > button{
+    font-family: "Open Sans",sans-serif;
+    color: #333333;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 1px;
+
+}
+
+.spacing{
+    margin-left: 2px;
+}
+
+.navbar-toggler-icon{
+    background: none;
+    color: #6255a5;
+    font-size:35px;
+}
+/** button **/
+.btn-navbar{
+    background-color: #6255a5;
+    width:89px;
+    color: #6255a5;
+    height: 40px;
+    border-radius: 3px;
+    color:#fff;
+    font-family: "open Sans", sans-serif;
+    font-size: 13px; 
+    margin-left: 30px;
+}
+nav button:focus {
+    outline: none;
+}
+
+
+/**** Title ****/
+#Title {
+    margin-top: 75px;
+    height: 200px;
+    width: 100%;
+    background-image: url("../../images/user-profile/banner-with-overlay.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 30px;
+}
+
+#Title .container {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#title {
+    color: #fff;
+    font-family: "Open Sans", sans-serif;
+    font-size: 48px;
+    line-height: 52px;
+    font-weight: 600;
+}
+
+#title h2 {
+    width: 100%;
+    height: 100%;
+}
+
+/*** header ***/
+
+.header h2 {
+    margin-top: 30px;
+    font-family: "open sans", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+    margin-bottom: 30px;
+}
+
+#General-Questions,
+#Uploaders,
+#Downloaders {
+     margin-top: 30px;
+     margin-bottom: 30px;
+}
+#Downloaders{
+    margin-bottom: 60px;
+}
+/*** Questions ***/
+.question {
+    margin-top: 15px;
+}
+.card-header h2 {
+    font-family: "open sans", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    color: #333333;
+}
+
+.card-body {
+    font-family: "open sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333333;
+    padding: 0 20px;
+    padding-bottom: 15px;
+}
+.btn-link{
+    padding:0px;
+}
+.card-header{
+    border-bottom: none;
+}
+/**** footer *****/
+ul.social-list {
+    padding: 0;
+    margin-top: 0px;
+}
+
+ul.social-list li {
+    display: inline-block;
+    
+}
+
+ul.social-list li a {
+    border: 1px solid #fff;
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    line-height: 35px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 400ms linear;
+}
+
+ul.social-list li:nth-child(1) a {
+    background: #6255a5;
+    border-color: transparent;
+     
+}
+
+ul.social-list li:nth-child(2) a {
+    background: #6255a5;
+    border-color: transparent;
+    
+}
+
+ul.social-list li:nth-child(3) a {
+    background: #6255a5;
+    border-color: transparent;
+    padding-bottom:5px !important;
+}
+footer .social-list{
+    text-align: right;
+}

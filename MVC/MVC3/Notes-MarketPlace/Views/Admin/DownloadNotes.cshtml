@@ -1,0 +1,263 @@
+﻿@model IEnumerable<Notes_MarketPlace.Models.Downloads>
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes-MarketPlace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="~/Content/Admin/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/Admin/css/Download-Notes/Download-Notes.css">
+    <link rel="stylesheet" href="~/Content/Admin/css/Manage-Admins/responsive.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href='@Url.Action("Dashboard", "Admin")'>
+                    <img src="~/Content/Admin/images/user-profile/navbarbanner.png" alt="logo" class="img-responsive">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">&#9776;</span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("Dashboard", "Admin",new { })'>Dashboard</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Notes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown-1">
+                                <a class="dropdown-item" href='@Url.Action("NotesUnderReview", "Admin")'>Notes Under Review</a>
+                                <a class="dropdown-item" href='@Url.Action("PublishNotes", "Admin")'>Published Notes</a>
+                                <a class="dropdown-item" href='@Url.Action("DownloadNotes", "Admin")'>Downloaded Notes</a>
+                                <a class="dropdown-item" href='@Url.Action("RejectedNotes", "Admin")'>Rejected Notes</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("Members", "Admin")'>Members</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Reports
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown-2">
+                                <a class="dropdown-item" href='@Url.Action("SpamReports", "Admin")'>Spam Reports</a>
+                            </div>
+
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown-3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Setting
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown-3">
+                                @if ((bool)Session["SuperAdmin"])
+                                {
+                                    <a class="dropdown-item" href='@Url.Action("ManageAdmin", "Admin")'>Manage Administarator</a>
+                                }
+
+                                <a class="dropdown-item" href='@Url.Action("ManageCategory", "Admin")'>Manage Category</a>
+                                <a class="dropdown-item" href='@Url.Action("ManageType", "Admin")'>Manage Type</a>
+                                <a class="dropdown-item" href='@Url.Action("ManageCountry", "Admin")'>Manage Country</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown nav-item-img">
+                            @if (Session["Profile"] != null)
+                            {
+                                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src='~/UploadFiles/@Session["Profile"]' alt="client" class="rounded-circle seller">
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="~/Content/Admin/images/Dashboard/user-img.png" alt="client" class="rounded-circle seller">
+                                </a>
+                            }
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href='@Url.Action("MyProfile", "Admin")'>Update Profile</a>
+
+                                <a class="dropdown-item" href='@Url.Action("ChangePassword", "User")'>Change Password</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href='@Url.Action("LogOut", "User")' style="color: #6255a5;">Logout</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <form class="form-inline" style="float: none;">
+                                <a href='@Url.Action("LogOut", "User")'><button class="btn btn-outline-success btn-navbar" href='@Url.Action("LogOut", "User")' type="button">Logout</button></a>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div id="Download-Notes">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-12">
+                    <div id="header">
+                        <h2>Download Notes</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12 col-12">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 col-4">
+                                <label for="inputNote" id="Note-label">Note</label>
+                                <select id="inputNote" class="form-control custom-select">
+                                    <option selected>Khyati</option>
+                                    <option>..</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-4">
+                                <label for="inputBuyer" id="Buyer-label">Buyer</label>
+                                <select id="inputBuyer" class="form-control custom-select">
+                                    <option selected>Rahul</option>
+                                    <option>..</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-4">
+                                <label for="inputSeller" id="seller-label">Seller</label>
+                                <select id="inputSeller" class="form-control custom-select">
+                                    <option selected>Vishal</option>
+                                    <option>..</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 col-12 margin-top-30">
+                    <form class="form-inline">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 col-7">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                                       aria-label="Search" id="search">
+                                <img src="~/Content/Admin/images/Dashboard/search.jpg" alt="search" class="search-icon">
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-5">
+                                <button class="btn btn-search " type="button">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">SR NO.</th>
+
+                            <th scope="col">NOTE TITLE</th>
+                            <th scope="col">CATEGORY</th>
+                            <th scope="col">BUYER</th>
+                            <th scope="col">SELLER</th>
+                            <th scope="col">SELL TYPE</th>
+                            <th scope="col">PRICE</th>
+
+                            <th scope="col">DWNLOADED DATE/TIME</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var i = 0;
+                            foreach (var item in Model)
+                            {
+                                i += 1;
+                                <tr>
+                                    <th scope="row">@i</th>
+                                    <td>@item.download.NoteTitle</td>
+                                    <td>@item.download.NoteCategory</td>
+                                    <td>@item.Buyer.FirstName @item.Buyer.LastName <span class="text-right"><img src="~/Content/Admin/images/eye.png"></span></td>
+                                    <td>@item.seller.FirstName @item.seller.LastName <span class="text-right"><img src="~/Content/Admin/images/eye.png"></span></td>
+                                    @if (item.download.IsPaid)
+                                    {
+                                        <td>Paid</td>
+                                        <td>$ @item.download.PurchasedPrice</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Free</td>
+                                        <td>$0</td>
+                                    }
+                                    <td>@item.download.CreatedDate</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="dropbtn"><img src="~/Content/Admin/images/images/dots.png"></button>
+                                            <div class="dropdown-content">
+                                                <a href='@Url.Action("Downloading", "User", new { id = @item.download.NoteID })'>Download Note</a>
+                                                <a href='@Url.Action("NotesDetails", "User", new { id = @item.download.NoteID })'>View More </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+
+    <footer>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-12 text-center">
+                version 1.1.24
+            </div>
+            <div class="col-md-6 col-sm-12 col-12 text-right">
+                <p>
+                    Copyright &copy; Tatvasoft All rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script src="~/Content/Admin/js/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            var table = $('table').DataTable({
+                'sDom': '"top"i',
+                "iDisplayLength": 10,
+                "binfo": false,
+                language: {
+                    paginate: {
+                        next: '<img src="/Content/Front/images/images/right-arrow.png">',
+                        previous: '<img src="/Content/Front/images/images/left-arrow.png">'
+                    }
+                }
+            }
+            );
+            $('.btn-search').click(function () {
+                var x = $('#search').val();
+
+                table.search(x).draw();
+            });
+
+        });
+    </script>
+    <script src="~/Content/Admin/js/bootstrap.min.js"></script>
+    <script src="~/Content/Admin/js/script.js"></script>
+</body>
+</html>

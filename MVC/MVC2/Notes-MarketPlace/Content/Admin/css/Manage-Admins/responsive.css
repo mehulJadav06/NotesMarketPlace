@@ -1,0 +1,156 @@
+@media(max-width:1199px) and (min-width:992px){
+    .navbar-nav {
+        padding-left: 15px;
+    }
+
+    .navbar-brand {
+        width: fit-content;
+    }
+    .navbar-brand img {
+        width: 80%;
+    }
+    .seller {
+        margin-left: 10px;
+    }
+
+    .btn-navbar {
+        margin-left: 15px;
+    }
+    ul.navbar-nav > li > a
+    {
+        font-family: "Open Sans",sans-serif;
+        color: #333333;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 18px;
+        letter-spacing: 1px;
+
+    }
+}
+
+
+@media(max-width:991px) and (min-width:768px){
+    .navbar-nav {
+        padding-left: 0;
+    }
+    .nav-item{
+        margin-top: 0px;
+    }
+    .nav-item img{
+        margin-bottom: 10px;
+    }
+    .btn-navbar {
+        margin-left: 0px;
+    }
+
+    .seller {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    .form-inline {
+        float: left;
+        margin-top:0px;
+    }
+    #search{
+        width: 250px;
+    }
+    .btn-search{
+        width: 100px;
+    }
+    .heading{
+        margin-top: 15px;
+    }
+}
+
+
+@media(max-width:767px){
+    .navbar-nav {
+        padding-left: 0;
+    }
+
+    .btn-navbar {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+    .nav-item{
+        margin-top: 0px;
+    }
+    .nav-item img{
+        margin-bottom: 10px;
+    }
+    .seller {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+
+    .form-inline {
+        float: left;
+    }
+
+    #search{
+        width: 200px;
+    }
+    .btn-search{
+        width: 95px;
+    }
+    .heading{
+        
+        margin-top: 15px;
+    }
+    
+    footer .row > div{
+        text-align: center !important;
+    }
+    .arrow-left{
+        margin-right: 15px;
+    }
+    .arrow-right{
+        margin-left: 0px;
+    }
+    ul.pagination li:nth-child(3) a,
+ul.pagination li:nth-child(4) a,
+ul.pagination li:nth-child(5) a,
+ul.pagination li:nth-child(6) a
+{
+    margin-left: 15px;
+}
+.container{
+    max-width: 100%;
+}
+    .form-inline{
+        float: left;
+        margin-top: 20px;
+    }
+    .margin-top-30{
+        margin-top:0px;
+        }
+    }
+}
+
+@media(max-width:575px){
+    .navbar-brand{
+        width: 75%;
+    }
+    .navbar-brand img{
+        width: 100%;
+    }
+    .navbar-toggler {
+        position: fixed;
+        right: 0px;
+        top: 0px;
+    }
+    #search{
+        width: 280px;
+    }
+
+    .form-inline{
+        float: left;
+    }
+    
+}
+@media(max-width:394px){
+    #search{
+        width: 180px;
+    }
+}

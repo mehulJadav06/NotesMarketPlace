@@ -1,0 +1,365 @@
+﻿@model Notes_MarketPlace.Models.Dashboard
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes-Marketplace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="~/Content/Front/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/Front/css/dashboard/dashboard.css">
+    <link rel="stylesheet" href="~/Content/Front/css/dashboard/responsive.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href='@Url.Action("Home", "User")' >
+                    <img src="~/Content/Front/images/user-profile/navbarbanner.png" alt="logo" class="img-responsive">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">&#9776;</span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("SearchNotes", "User")'>Search<span class="spacing">Notes</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("Dashboard", "User")'>Sell<span class="spacing">Your</span><span class="spacing">Notes</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("BuyerRequest", "User")'>Buyer<span class="spacing">Requests</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("FAQ", "User")'>FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("ContactUs", "User")'>Contact<span class="spacing">Us</span></a>
+
+                        </li>
+                        <li class="nav-item dropdown">
+                            @if (Session["Profile"] != null)
+                            {
+                                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src='~/UploadFiles/@Session["Profile"]' height="40px" width="40px" alt="client" class="rounded-circle seller">
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="~/Content/Admin/images/Dashboard/user-img.png" alt="client" class="rounded-circle seller">
+                                </a>
+                            }
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href='@Url.Action("UserProfile", "User")'>My Profile</a>
+                            <a class="dropdown-item" href='@Url.Action("MyDownloads", "User")'>My Download</a>
+                            <a class="dropdown-item" href='@Url.Action("MySoldNotes", "User")'>My Sold Notes</a>
+                            <a class="dropdown-item" href='@Url.Action("MyRejectedNotes", "User")'>My Rejected Notes</a>
+                            <a class="dropdown-item" href='@Url.Action("ChangePassword", "User")'>Change Password</a>
+                        </div>
+                        </li>
+                        <li class="nav-item btnn">
+                            <form class="form-inline">
+                                <a class="nav-link" href='@Url.Action("LogOut", "User")'><button class="btn btn-outline-success btn-navbar" type="submit">Logout</button></a>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="Dashboard">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-12">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-12">
+                            <div class="heading">
+                                <h2>Dashboard</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-12">
+                            <div id="addnote-btn">
+                                <button type="button" id="add-note" class="btn btn-block btn-general">Add Note</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-12">
+                    <div id="dashboard-details">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-4 col-12 remove-col-right-padding">
+                                        <div id="my-earning">
+                                            <div class="stat-item text-center">
+                                                <img src="~/Content/Front/images/Dashboard/earning-icon.svg">
+                                                <h2>My Earning</h2>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-8 col-sm-8 col-12 remove-col-left-padding">
+                                        <div id="sold-earn">
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-6">
+                                                    <div class="stat-item text-center">
+                                                        <h2>@Model.numberOfNotes</h2>
+                                                        <p>No. Of Notes Sold</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-6">
+                                                    <div class="stat-item text-center">
+                                                        <h2>$ @Model.earnMoney</h2>
+                                                        <p>Money Earned</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-4 col-4">
+                                        <div class="dashboard-square">
+                                            <div class="stat-item text-center">
+                                                <h2>@Model.myDownloads</h2>
+                                                <p>My Downloads</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-4">
+                                        <div class="dashboard-square">
+                                            <div class="stat-item text-center">
+                                                <h2>@Model.myRejectedNotes</h2>
+                                                <p>My Rejected Notes</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-4">
+                                        <div class="dashboard-square">
+                                            <div class="stat-item text-center">
+                                                <h2>@Model.buyerRequest</h2>
+                                                <p>Buyer Requests</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="progress-notes">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-12">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-12 heading">
+                            <h3>In Progress Notes</h3>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <form class="form-inline">
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-8 col-7">
+                                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-1">
+                                        <img src="~/Content/Front/images/Dashboard/search.jpg" alt="search" class="search-icon">
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-5">
+                                        <button class="btn btn-search " id="search1" type="button">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-12 table-responsive">
+                    <table class="table" id="table1">
+                        <thead>
+                            <tr>
+                                <th scope="col">ADDED DATE</th>
+                                <th scope="col">TITLE</th>
+                                <th scope="col">CATEGORY</th>
+                                <th scope="col">STATUS</th>
+                                <th scope="col">ACTIONS</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @{
+                                int i = 0;
+                                foreach (var item in Model.progressNotes)
+                                {
+                                    i += 1;
+                                    <tr>
+                                        <td scope="row">@item.sellerNote.CreatedDate</td>
+                                        <td>@item.sellerNote.Title</td>
+                                        <td>@item.category.Name</td>
+                                        <td>@item.referenceData.DataValue</td>
+                                        <td><img src="~/Content/Front/images/Dashboard/edit.png"><img src="~/Content/Front/images/Dashboard/edit.png"></td>
+                                    </tr>
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </section>
+        <section id="Published-Notes">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-12">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-12 heading">
+                            <h3>Published Notes</h3>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <form class="form-inline">
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-8 col-7">
+                                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-2">
+                                        <img src="~/Content/Front/images/Dashboard/search.jpg" alt="search" class="search-icon">
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-5">
+                                        <button class="btn btn-search" id="search2" type="submit">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-12 table-responsive">
+                    <table class="table" id="table2">
+                        <thead>
+                            <tr>
+                                <th scope="col">ADDED DATE</th>
+                                <th scope="col">TITLE</th>
+                                <th scope="col">CATEGORY</th>
+                                <th scope="col">Sell Type</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var item in Model.PublishedNotes)
+                                {
+                                    
+                                                        <tr>
+                                                            <td scope="row">@item.sellerNote.CreatedDate</td>
+                                                            <td>@item.sellerNote.Title</td>
+                                                            <td>@item.category.Name</td>
+                                                            @if (item.sellerNote.IsPaid)
+                                                            {
+                                                                <td>Paid</td>
+                                                                <td>$ @item.sellerNote.SellingPrice</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>Free</td>
+                                                                <td>$0</td>
+                                                            }
+
+                                                            <td><img src="~/Content/Front/images/eye.png"></td>
+                                            </tr>
+                                    }
+                                }
+
+                                </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </section>
+    </div>
+    <hr>
+    <footer>
+        <div class="content-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <p>
+                            Copyright &copy; Tatvasoft All rights Reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-12 social-list-div">
+                        <ul class="social-list">
+                            <li><a href="#"><img src="~/Content/Front/images/images/facebook.png"></a></li>
+                            <li><a href="#"><img src="~/Content/Front/images/images/twitter.png"></a></li>
+                            <li><a href="#"><img src="~/Content/Front/images/images/linkedin.png"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="~/Content/Front/js/jquery.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script>
+        $("#add-note").click(function () {
+            window.location.href ='@Url.Action("AddNotes", "User")';
+        });
+        $(document).ready(function () {
+            var table = $('#table1').DataTable({
+                'sDom': '"top"i',
+                "iDisplayLength": 10,
+                "binfo": false,
+                language: {
+                    paginate: {
+                        next: '<img src="/Content/Front/images/images/right-arrow.png">',
+                        previous: '<img src="/Content/Front/images/images/left-arrow.png">'
+                    }
+                }
+            }
+            );
+            $('#search1').click(function () {
+                var x = $('#search-1').val();
+                table.search(x).draw();
+            });
+
+        });
+        $(document).ready(function () {
+            var table = $('#table2').DataTable({
+                'sDom': '"top"i',
+                "iDisplayLength": 10,
+                "binfo": false,
+                language: {
+                    paginate: {
+                        next: '<img src="/Content/Front/images/images/right-arrow.png">',
+                        previous: '<img src="/Content/Front/images/images/left-arrow.png">'
+                    }
+                }
+            }
+            );
+            $('#search2').click(function () {
+                var x = $('#search-2').val();
+                table.search(x).draw();
+            });
+
+        });
+    </script>
+
+
+    <script src="~/Content/Front/js/bootstrap.min.js"></script>
+    <script src="~/Content/Front/js/script.js"></script>
+</body>
+
+</html>
