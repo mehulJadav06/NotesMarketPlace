@@ -1,3 +1,5 @@
 # NotesMarketPlaceHtml
 
-its not only html :D
+
+6 month of trainning in tatvasoft
+.Net MVC  
